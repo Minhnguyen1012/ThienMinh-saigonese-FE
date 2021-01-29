@@ -1,14 +1,32 @@
+body {
+  overflow-x: hidden;
+}
+
 .navbar {
   padding: 0px !important;
+  font-size: 21px;
+  color: white !important;
 }
-/* .photo {
-  background-image: url(./images/springs.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: fit-content;
-  opacity: 0.5;
-} */
-
+.navbar-no-color {
+  background: linear-gradient(
+    90deg,
+    rgb(17, 36, 46) 10%,
+    #30525e 100%
+  ) !important;
+}
+.navbar-color {
+  background-color: rgba(160, 154, 154, 0.4) !important;
+}
+/* Card */
+.post {
+  box-shadow: 4px 4px 2px rgb(182, 175, 175), -2px -2px 2px #efefef;
+  transform: scale(0.95);
+  transition: all 0.6s ease-in-out;
+}
+.post:hover {
+  box-shadow: 14px 14px 12px #888, -12px -12px 12px #efefef;
+  transform: translate(-5px, -5px);
+}
 /*  */
 #loginn .view {
   background-image: url(./images/saigon-night.jpg);
@@ -18,26 +36,12 @@
   height: 100vh;
 }
 
-#loginn .gradient {
-  background: -webkit-linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
-  background: -webkit-gradient(
-    linear,
-    45deg,
-    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
-  );
-  background: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.7),
-    rgba(72, 15, 144, 0.4) 100%
-  );
+#loginn .card {
+  background-color: rgba(5, 5, 5, 0.349);
 }
 
-#loginn .card {
-  background-color: rgba(126, 123, 215, 0.2);
+#loginn .card-body {
+  margin-bottom: 0vh;
 }
 
 #loginn h6 {
@@ -59,7 +63,7 @@
 }
 
 #loginn label {
-  color: #fff !important;
+  color: white !important;
 }
 /* Google login Button */
 .google-btn {
@@ -110,9 +114,6 @@ footer {
 }
 
 /* cart */
-.container {
-  padding: 2rem 0rem;
-}
 
 .table-image thead td,
 .table-image thead th {
@@ -127,7 +128,7 @@ footer {
 }
 .table-image td.qty,
 .table-image th.qty {
-  max-width: 2rem;
+  max-width: 3.3rem;
 }
 
 .price {
@@ -138,16 +139,11 @@ footer {
   padding-top: 0rem;
 }
 
-.home {
-  /* background-image: url(./images/homeImage.jpeg);
-  width: 1270px;
-  height: 2300px;
-  background-color: antiquewhite;
-  background-repeat: no-repeat; */
-}
 .card {
   border: none;
-  left: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .text-menu {
   margin: 10px 0 20px;
@@ -156,4 +152,39 @@ footer {
 }
 .color-cart {
   color: black;
+}
+
+/*  */
+.hove:hover {
+  color: #aa9765;
+}
+
+/* detail */
+.detailCard {
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: row;
+  /* */
+  /* padding-top: 20px; */
+  align-items: center;
+}
+.text-name {
+  margin: 15%;
+}
+
+.moreColor {
+  background: rgba(53, 47, 47, 0.5);
+  max-height: 670px;
+  width: 100vw;
+  object-fit: cover;
+}
+
+.moreColor ::before {
+  background: black;
+}
+
+.thanh {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

@@ -3,7 +3,6 @@ import { Button, Card, CardGroup, Image, NavLink, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import cartActions from "../redux/actions/cart.actions";
-import foodActions from "../redux/actions/food.actions";
 
 const Cards = () => {
   const history = useHistory();
@@ -11,39 +10,44 @@ const Cards = () => {
   const dispatch = useDispatch();
 
   if (foods) {
-    console.log(foods[0].images[0]);
+    console.log(foods[0]?.images[0]);
   }
   const handleClick = (id) => {
-    history.push(`/detail:id`);
+    history.push(`/foods/${id}`);
   };
   const handleAddFoodToCart = (food) => {
-    console.log("handle add", food);
+    food.qty === undefined ? (food.qty = 1) : (food.qty += 1);
     dispatch(cartActions.cartsRequest(food));
   };
   return (
-    <Row>
+    <Row className="thanh">
       {foods &&
         foods.map((food) => (
           <CardGroup
-            className="card"
+            onClick={() => handleClick(food?._id)}
+            className="post"
             style={{
-              width: "19.1rem",
+              // boxShadow: "-5px  5px 5px #888",
+              width: "19rem",
               height: "33rem",
-              margin: "18px",
-              // border: "0.75px solid silver",
+              margin: "18px 18px 40px 40px",
             }}
           >
             <Card.Img
-              style={{ width: "19rem", height: "22rem" }}
+              style={{
+                width: "19rem",
+                height: "22.3rem",
+                objectFit: "cover",
+              }}
               variant="top"
-              src={food.images}
-              alt={food.name}
+              src={food?.images}
+              alt={food?.name}
             />
-            <Card.Body style={{ paddingLeft: "0px" }}>
+            <Card.Body>
               <Card.Title style={{ fontSize: "25px" }}>
-                <strong>{food.name}</strong>
+                <strong>{food?.name}</strong>
               </Card.Title>
-              <h5 className="text-menu "> {food.price * 1000} VNÄ</h5>
+              <h5 className="text-menu "> {food?.price * 1000} VND</h5>
               <Button
                 className="mr-3"
                 onClick={() => handleAddFoodToCart(food)}
@@ -53,7 +57,7 @@ const Cards = () => {
               </Button>
               <Button
                 variant="outline-warning"
-                onClick={() => handleClick(food._id)}
+                onClick={() => handleClick(food?._id)}
               >
                 {" "}
                 Detail

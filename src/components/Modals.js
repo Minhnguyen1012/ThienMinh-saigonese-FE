@@ -1,43 +1,36 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Container, Modal } from "react-bootstrap";
 import { faCartPlus, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cartActions from "../redux/actions/cart.actions";
 import { useSelector, useDispatch } from "react-redux";
 const Modals = () => {
   const [lgShow, setLgShow] = useState(false);
   const cartFoods = useSelector((state) => state.cart.cartFoods);
+  const inputHandler = (food, quantity) => {
+    food.qty = parseInt(quantity);
+    if (food.qty >= 1) dispatch(cartActions.cartsRequest(food));
+  };
   const dispatch = useDispatch();
+  let bigTotal = 0;
 
   const handleSubmit = (e) => {
-    console.log("put this t to this", cartFoods);
+    console.log("put this  to this", cartFoods);
     dispatch(cartActions.createNewCart(cartFoods));
   };
 
-  // const addProductToCart = (newProduct) => {
-  //   const newProductList = cart.products.map((cartProduct) => {
-  //     if (cartProduct.id === newProduct.id) {
-  //       cartProduct.qty += 1;
-  //       cartProduct.price += newProduct.price;
-  //     }
-  //     return cartProduct;
-  //   });
-  //   const newTotalPrice = cart.totalPrice + newProduct.price;
-  //   setCart({ products: newProductList, totalPrice: newTotalPrice });
-  // };
-
   return (
     <>
-      <Button variant="light" onClick={() => setLgShow(true)}>
-        <FontAwesomeIcon icon={faCartPlus} />
-      </Button>
+      <div variant="light" onClick={() => setLgShow(true)}>
+        <ShoppingCartIcon fontSize="large" />
+      </div>
 
       <Modal
         size="lg"
         show={lgShow}
         onHide={() => setLgShow(false)}
-        aria-labelledby="example-tuan-sizes-title-lg"
+        aria-labelledby="sizes-title-lg"
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-tuan-sizes-title-lg">
@@ -45,8 +38,13 @@ const Modals = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <>
+          <Container>
             <div
+              style={{
+                height: "370px",
+                overflowY: "auto",
+                scrollSnapType: " y",
+              }}
               id="cartModal"
               tabindex="-1"
               role="dialog"
@@ -55,10 +53,10 @@ const Modals = () => {
             >
               <div role="document">
                 <div>
-                  <div className="tuan-header border-bottom-0">
+                  <div className="header border-bottom-0">
                     <h5 id="exampleModalLabel"></h5>
                   </div>
-                  <div className="tuan-body">
+                  <div className="body">
                     <table className="table table-image">
                       <thead>
                         <tr>
@@ -67,12 +65,13 @@ const Modals = () => {
                           <th scope="col">Price</th>
                           <th scope="col">Qty</th>
                           <th scope="col">Total</th>
-                          <th scope="col">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         {cartFoods &&
                           cartFoods.map((cart) => {
+                            let total = cart.price * 1000 * cart.qty;
+                            bigTotal += total;
                             return (
                               <tr className="w-25">
                                 <img
@@ -84,49 +83,52 @@ const Modals = () => {
 
                                 <td>{cart.name}</td>
                                 <td>{cart.price * 1000}</td>
-                                <td className="qty">
+                                <td className="qty" style={{}}>
                                   <input
-                                    type="text"
+                                    type="number"
                                     className="form-control"
-                                    id="input1"
-                                    value="1"
+                                    id={cart._id}
+                                    name={cart.name}
+                                    value={cart.qty}
+                                    onChange={(e) =>
+                                      inputHandler(cart, e.target.value)
+                                    }
                                   />
                                 </td>
 
-                                <td>Total</td>
-                                <td>Actions</td>
+                                <td>{`${cart.price * 1000 * cart.qty}`}</td>
                               </tr>
                             );
                           })}
                       </tbody>
                     </table>
-                    <div className="d-flex justify-content-end">
-                      <h5>
-                        Total: <span className="price text-success">89$</span>
-                      </h5>
-                    </div>
-                  </div>
-                  <div className="tuan-footer border-top-0 d-flex justify-content-between">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-dismiss="tuan"
-                      onClick={() => setLgShow(false)}
-                    >
-                      Close
-                    </button>
-                    <button
-                      onClick={() => handleSubmit()}
-                      type="button"
-                      className="btn btn-success"
-                    >
-                      Buy
-                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </>
+          </Container>
+          <div className="d-flex justify-content-end">
+            <h5>
+              Total: <span className="price text-success">{`${bigTotal}`}</span>
+            </h5>
+          </div>
+          <div className="tuan-footer border-top-0 d-flex justify-content-between">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              data-dismiss="tuan"
+              onClick={() => setLgShow(false)}
+            >
+              Close
+            </button>
+            <button
+              onClick={() => handleSubmit()}
+              type="button"
+              className="btn btn-success"
+            >
+              Buy
+            </button>
+          </div>
         </Modal.Body>
       </Modal>
     </>

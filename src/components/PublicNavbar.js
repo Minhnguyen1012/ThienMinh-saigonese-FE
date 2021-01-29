@@ -1,39 +1,35 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Navbar, Nav, NavDropdown, NavLink } from "react-bootstrap";
-import authActions from "../redux/actions/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import logo from "../images/saigonese.png";
-
+import { Link } from "react-router-dom";
+import logo from "../images/logo2.png";
 import Modals from "./Modals";
 import api from "../apiService";
 import { toast } from "react-toastify";
+import CustomizedMenus from "./Menu";
 
 const PublicNavbar = () => {
   const loading = useSelector((state) => state.auth.loading);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const location = useLocation;
+
   const [loadings, setLoadings] = useState(false);
-  const [book, setBook] = useState(null);
+  // const [navbar, setNavbar] = useState(false);
   const [addingProduct, setAddingProduct] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(authActions.logout());
-  };
-  const addToCart = (book) => {
-    setAddingProduct(book);
-  };
+  const [scrollY, setScrollY] = useState(0);
 
-  // useEffect(() => {
-  //   if (!addingBook) return;
-  //   dispatch(bookActions.addBookToReading(addingBook));
-  // }, [dispatch, addingBook]);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollY(position);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
-  // useEffect(() => {
-  //   dispatch(bookActions.getSelectedBook(bookId));
-  // }, [dispatch, bookId]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const postData = async () => {
@@ -53,17 +49,11 @@ const PublicNavbar = () => {
 
   const authLinks = (
     <Nav>
-      <Nav.Link as={Link} to="/recipe/add">
-        Add Recipe
-      </Nav.Link>
-      <Nav.Link as={Link} to="/admin/profile">
-        <FontAwesomeIcon icon="chart-line" size="sm" /> Admin
-      </Nav.Link>
-      <Nav.Link onClick={handleLogout}>
-        <FontAwesomeIcon icon="sign-out-alt" size="sm" /> Logout
+      <Nav.Link className="align-self-center">
+        <Modals />
       </Nav.Link>
       <Nav.Link>
-        <Modals />
+        <CustomizedMenus />
       </Nav.Link>
     </Nav>
   );
@@ -77,38 +67,53 @@ const PublicNavbar = () => {
       </Nav.Link>
     </Nav>
   );
+  // const changeBackground = () => {
+  //   if (window.scrollY >= 80) {
+  //     setNavbar(true);
+  //   } else {
+  //     setNavbar(false);
+  //   }
+  // };
 
   return (
     <>
-      <Navbar bg="light">
-        <Navbar.Brand>
-          <Nav.Link as={NavLink} exact={true} to="/">
-            <img src={logo} alt="CoderSchool" />
-          </Nav.Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="All Products" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">
-                Vietnamese Cuisine
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Tea</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Dessert</NavDropdown.Item>
-              <NavDropdown.Divider />
-              {/* <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item> */}
-            </NavDropdown>
-          </Nav>
+      <nav>
+        <Navbar
+          fixed="top"
+          className={scrollY > 0 ? "navbar-no-color " : "navbar-color"}
+          variant="dark"
+        >
+          <Navbar.Brand>
+            <Nav.Link as={NavLink} exact={true} to="/login">
+              <img src={logo} alt="saigonese" />
+            </Nav.Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto"></Nav>
-            {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
+            <Nav className="mr-auto">
+              <Nav.Link className="hove" href="/">
+                Home
+              </Nav.Link>
+              <Nav.Link href="#link">Menu</Nav.Link>
+              <Nav.Link href="/story">Our Stories</Nav.Link>
+              <NavDropdown title="All Products" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/category/Vncuisine">
+                  Vietnamese Cuisine
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/category/tea">Tea</NavDropdown.Item>
+                <NavDropdown.Item href="/category/dessert">
+                  Dessert
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+              </NavDropdown>
+            </Nav>
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto"></Nav>
+              {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
+            </Navbar.Collapse>
           </Navbar.Collapse>
-        </Navbar.Collapse>
-      </Navbar>
+        </Navbar>
+      </nav>
     </>
   );
 };

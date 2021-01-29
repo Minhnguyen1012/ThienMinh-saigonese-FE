@@ -1,7 +1,7 @@
 import * as types from "../constants/auth.constants";
 import api from "../../apiService";
 import { toast } from "react-toastify";
-import routeActions from "./route.actions";
+import { routeActions } from "./route.actions";
 
 const loginRequest = ({ email, password }) => async (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST, payload: null });
@@ -39,13 +39,44 @@ const register = ({ name, email, password }) => async (dispatch) => {
     dispatch({ type: types.REGISTER_FAILURE, payload: error });
   }
 };
+const paymentInfo = ({
+  firstName,
+  lastName,
+  address1,
+  address2,
+  city,
+  state,
+  zip,
+  country,
+}) => async (dispatch) => {
+  dispatch({ type: types.PAYMENTS_REQUEST, payload: null });
+  try {
+    const res = await api.post("/users", {
+      firstName,
+      lastName,
+      address1,
+      address2,
+      city,
+      state,
+      zip,
+      country,
+    });
+    dispatch({ type: types.PAYMENTS_SUCCESS, payload: res.data.data });
+  } catch (error) {
+    dispatch({ type: types.PAYMENTS_FAILURE, payload: error });
+  }
+};
+
 const loginFacebook = (access_token) => async (dispatch) => {
   dispatch({ type: types.LOGIN_FACEBOOK_REQUEST, payload: null });
   try {
     const res = await api.post("/auth/login/facebook", { access_token });
     dispatch({ type: types.LOGIN_FACEBOOK_SUCCESS, payload: res.data.data });
     const name = res.data.data.user.name;
+
+    const email = res.data.data.user.email;
     toast.success(`Welcome ${name}`);
+    dispatch(authActions.register({ name, email }));
     // dispatch(routeActions.redirect("/"));
   } catch (error) {
     console.log(error);
@@ -80,5 +111,6 @@ export const authActions = {
   loginGoogle,
   logout,
   getCurrentUser,
+  paymentInfo,
 };
 export default authActions;

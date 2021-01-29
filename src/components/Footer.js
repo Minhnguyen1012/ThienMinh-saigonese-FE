@@ -15,23 +15,21 @@ import {
 const Footer = () => {
   return (
     <footer>
-      {/* <img src={homeImage} style={{ height: "100%", width: "100%" }} /> */}
       <div className="bigFotterBox">
         <div className="footerBox">
           <div>
             <img
               src={logoo}
               style={{ color: "white" }}
-              alt="SMovies"
+              alt="background"
               width="200px"
             />
           </div>
         </div>
         <div className="footerBox">
           <div>
-            <p>Filips van BourgondiÃ«laan 47 , 3703 XA Zeist, Netherlands </p>
-            {/* <p></p>
-            <p>Vietnam</p> */}
+            <p>Filips van Bourgondiëlaan 47 , 3703 XA Zeist, Netherlands </p>
+
             <div className="flexify">
               <FontAwesomeIcon icon={faPhoneSquareAlt} size={"lg"} />
               <p>&nbsp; (+31) 208 004 85</p>

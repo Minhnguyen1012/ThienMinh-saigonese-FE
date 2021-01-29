@@ -29,29 +29,7 @@ const usersRequest = (
   }
 };
 
-const conversationsRequest = (pageNum = 1, limit = 10, query = null) => async (
-  dispatch
-) => {
-  dispatch({ type: types.GET_CONVERSATIONS_REQUEST, payload: null });
-  try {
-    let queryString = "";
-    if (query) {
-      queryString = `&name=${query}`;
-    }
-    const res = await api.get(
-      `/conversations?page=${pageNum}&limit=${limit}${queryString}`
-    );
-    dispatch({
-      type: types.GET_CONVERSATIONS_SUCCESS,
-      payload: res.data.data,
-    });
-  } catch (error) {
-    dispatch({ type: types.GET_CONVERSATIONS_FAILURE, payload: error });
-  }
-};
-
 const userActions = {
   usersRequest,
-  conversationsRequest,
 };
 export default userActions;

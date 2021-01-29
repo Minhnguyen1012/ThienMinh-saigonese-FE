@@ -15,10 +15,10 @@ import StoryPage from "./pages/StoryPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import authActions from "./redux/actions/auth.actions";
-import { ClipLoader } from "react-spinners";
+import VietnameseCuisine from "./pages/VietnameseCuisine";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 import AddOrEditProduct from "./pages/AddOrEditProduct";
-
+import Navs from "./components/Navs";
 const App = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -36,14 +36,16 @@ const App = () => {
     <div className="App">
       {isAuthenticated === null ? (
         <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
-          <ClipLoader color="#f86c6b" size={150} loading={true} />
+          <img src="https://cdn.dribbble.com/users/2520294/screenshots/7209485/media/cf226d98a06282e9cabf5c2f8f6d547f.gif" />
         </div>
       ) : (
         <>
           <AlertMsg />
+
           <Router>
+            <PublicNavbar />
             <Switch>
-              <Route exact path="/detail/:id" component={DetailPage} />
+              <Route exact path="/foods/:id" component={DetailPage} />
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
@@ -51,6 +53,12 @@ const App = () => {
               <Route exact path="/pay-method" component={PayNavigation} />
               <Route exact path="/story" component={StoryPage} />
               <Route exact path="/recipe/add" component={AddOrEditProduct} />
+              <Route exact path="/navs" component={Navs} />
+              <Route
+                exact
+                path="/category/:category"
+                component={VietnameseCuisine}
+              />
             </Switch>
           </Router>
           <MessengerCustomerChat

@@ -2,11 +2,10 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 import NotFoundPage from "../pages/NotFoundPage";
-import AddEditBlogPage from "../pages/AddEditBlogPage";
 import ProfilePage from "../pages/Admin/ProfilePage";
 import SideMenu from "../pages/Admin/SideMenu";
 import DetailPage from "../pages/DetailPage";
-
+import AddOrEditProduct from "./pages/AddOrEditProduct";
 import PublicNavbar from "../components/PublicNavbar";
 import AlertMsg from "../components/AlertMsg";
 
@@ -21,13 +20,8 @@ const AdminLayout = () => {
             <AlertMsg />
             <Switch>
               <Route exact path="/admin/profile" component={ProfilePage} />
-              <Route exact path="/admin/foods/:id" component={DetailPage} />
-              {/* <Route exact path="/admin/blog/add" component={AddEditBlogPage} /> */}
-              <Route
-                exact
-                path="/admin/blog/edit/:id"
-                component={AddEditBlogPage}
-              />
+
+              <Route exact path="/recipe/add" component={AddOrEditProduct} />
 
               <Route component={NotFoundPage} />
             </Switch>

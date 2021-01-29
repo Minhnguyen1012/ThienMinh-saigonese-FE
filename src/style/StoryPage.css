@@ -1,0 +1,115 @@
+.cover-center {
+  display: flex;
+  justify-content: center;
+}
+.left-side {
+  margin-right: 100px;
+  text-align: center;
+  align-self: center;
+}
+
+.cake {
+  margin-top: 30px;
+}
+/* .story-card {
+  border-bottom: 1px solid black;
+} */
+.right-side {
+  padding-bottom: 20px;
+}
+.mini-story {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+}
+.caption {
+  top: 50vh;
+  /* left: 50%; */
+  /* transform: translate(-20%, -50%); */
+}
+.textBox {
+  animation: textup 12s linear infinite;
+  transform: translateY(50px);
+}
+/*  */
+@keyframes textup {
+  10% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh; */
+  /* background: #0c0c0c; */
+}
+.aa {
+  border-radius: 90px;
+  position: relative;
+  padding: 15px 50px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 140px;
+  overflow: hidden;
+}
+
+.aa .text {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* width: 100%; */
+  /* padding: 10px 10px; */
+  z-index: 1;
+  color: #fff;
+  font-size: 20px;
+}
+.aa .liquid {
+  position: absolute;
+  left: 0;
+  top: -80px;
+  width: 200px;
+  height: 200px;
+  background: #543f27;
+  transition: 0.5s;
+  /* box-shadow: inset 0 0 50px rgba(0, 0, 0.5); */
+}
+.aa .liquid::before,
+.aa .liquid::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 75%);
+}
+.aa .liquid::before {
+  border-radius: 45%;
+  background: #e6ba87;
+  animation: animate 5s linear infinite;
+}
+.aa .liquid::after {
+  border-radius: 40%;
+  background: rgb(230, 186, 135, 0.5);
+  animation: animate 10s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: translate(-60%, -74%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -74%) rotate(360deg);
+  }
+}
+
+.h6 {
+  padding-top: 50px;
+}

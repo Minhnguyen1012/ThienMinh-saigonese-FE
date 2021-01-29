@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 // import "mdbreact/dist/css/mdb.css";
 import { Redirect, useHistory } from "react-router-dom";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-import logo2 from "../images/logo2.png";
 
+import PublicNavbar from "../components/PublicNavbar";
 import {
-  MDBNavbar,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
   MDBMask,
   MDBRow,
   MDBCol,
@@ -23,16 +17,24 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBFormInline,
   MDBAnimation,
 } from "mdbreact";
-import { Nav, Navbar, NavLink } from "react-bootstrap";
+
 import { useSelector, useDispatch } from "react-redux";
 import authActions from "../redux/actions/auth.actions";
 
 import FacebookLogin from "react-facebook-login";
 import { GoogleLogin } from "react-google-login";
-import routeActions from "../redux/actions/route.actions";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 
 const FB_APP_ID = process.env.REACT_APP_FB_APP_ID;
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -61,8 +63,8 @@ const LoginPage = () => {
   });
 
   const dispatch = useDispatch();
-  const redirectTo = useSelector((state) => state.route.redirectTo);
-  const history = useHistory();
+  // const redirectTo = useSelector((state) => state.route.redirectTo);
+  // const history = useHistory();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
 
@@ -70,18 +72,6 @@ const LoginPage = () => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  // useEffect(() => {
-  //   if (redirectTo) {
-  //     if (redirectTo === "__GO_BACK__") {
-  //       history.goBack();
-  //       dispatch(routeActions.removeRedirectTo());
-  //     } else {
-  //       history.push(redirectTo);
-  //       dispatch(routeActions.removeRedirectTo());
-  //     }
-  //   }
-  // }, [dispatch, history, redirectTo]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -104,69 +94,152 @@ const LoginPage = () => {
     <div id="loginn">
       <Router>
         <div>
-          <MDBNavbar dark expand="md" fixed="top">
-            <MDBContainer>
-              <Navbar.Brand>
-                <MDBNavLink as={NavLink} exact={true} to="/">
-                  <img src={logo2} alt="CoderSchool" />
-                </MDBNavLink>
-              </Navbar.Brand>
-              <MDBNavbarToggler
-                onClick={() => toggleCollapse("navbarCollapse")}
-              />
-              <MDBCollapse id="navbarCollapse" isOpen={state.collapseID} navbar>
-                <MDBNavbarNav left>
-                  <MDBNavItem active>
-                    <MDBNavLink to="/">Home</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">Link</MDBNavLink>
-                  </MDBNavItem>
-                  <MDBNavItem>
-                    <MDBNavLink to="#!">Profile</MDBNavLink>
-                  </MDBNavItem>
-                </MDBNavbarNav>
-                <MDBNavbarNav right>
-                  <MDBNavItem></MDBNavItem>
-                </MDBNavbarNav>
-              </MDBCollapse>
-            </MDBContainer>
-          </MDBNavbar>
-          {state.collapseID && overlay}
+          <PublicNavbar />
         </div>
       </Router>
-      <MDBView>
-        <MDBMask className="d-flex justify-content-center align-items-center gradient">
-          <MDBContainer>
-            <MDBRow>
-              <MDBAnimation
-                type="fadeInLeft"
-                delay=".3s"
-                className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
-              >
-                <h1 className="h1-responsive font-weight-bold">Sign in</h1>
-                <hr className="hr-light" />
-                <h6 className="mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
-                  repellendus quasi fuga nesciunt dolorum nulla magnam veniam
-                  sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
-                  quisquam iste, maiores. Nulla.
-                </h6>
-                <MDBBtn outline color="white">
-                  Learn More
-                </MDBBtn>
-              </MDBAnimation>
+      <div
+        style={{
+          paddingTop: "72px",
+          opacity: "0.7",
+          backgroundImage:
+            "url(https://i.pinimg.com/originals/64/21/5e/64215eed9b316d9dee8ec96b57b55c46.jpg)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100vw",
+          objectFit: "cover",
+        }}
+      >
+        <Container>
+          <Row>
+            <div
+              type="fadeInLeft"
+              delay="0.3s"
+              className="  text-md-left col-md-6 mt-xl-5 mb-5"
+              style={{ color: "white" }}
+            >
+              <h1 className="h1-responsive font-weight-bold">Sign in</h1>
+              <hr className="hr-light" />
+              <h6 className="mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
+                repellendus quasi fuga nesciunt dolorum nulla magnam veniam
+                sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
+                quisquam iste, maiores. Nulla.
+              </h6>
+              <Card.Text color="white">Learn More</Card.Text>
+            </div>
 
-              <MDBCol md="6" xl="5" className="mb-4">
-                <MDBAnimation type="fadeInRight" delay=".3s">
-                  <MDBCard id="classic-card">
-                    <MDBCardBody className="white-text">
-                      <h3 className="text-center">
-                        <MDBIcon icon="user" />
-                      </h3>
-                      <hr className="hr-light" />
-                      <form onSubmit={handleSubmit}>
-                        <MDBInput
+            <Col md="6" xl="5" className="mb-4">
+              <div type="fadeInRight" delay=".3s">
+                <Card id="loginn-card1">
+                  <Card.Body className="white-text">
+                    <h3 className="text-center">
+                      <FontAwesomeIcon icon={faUserFriends} color={"black"} />
+                    </h3>
+                    <hr className="hr-light" />
+                    <form onSubmit={handleSubmit}>
+                      <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                          name="email"
+                          placeholder="Enter email"
+                          onChange={handleTyping}
+                          value={formData.email}
+                        />
+                        <Form.Text className="text-muted">
+                          We'll never share your email with anyone else.
+                        </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                          type="password"
+                          name="password"
+                          placeholder="Password"
+                          onChange={handleTyping}
+                          value={formData.password}
+                        />
+                      </Form.Group>
+
+                      <Button className="mb-2 " onClick={handleSubmit}>
+                        Sign In
+                      </Button>
+                    </form>
+
+                    <div className="d-flex flex-column text-center">
+                      <FacebookLogin
+                        appId={FB_APP_ID}
+                        fields="name,email,picture"
+                        callback={loginWithFacebook}
+                        icon="fa-facebook"
+                        onFailure={(err) => {
+                          console.log("FB LOGIN ERROR:", err);
+                        }}
+                        containerStyle={{
+                          textAlign: "center",
+                          backgroundColor: "#3b5998",
+                          borderColor: "#3b5998",
+                          flex: 1,
+                          display: "flex",
+                          color: "#fff",
+                          cursor: "pointer",
+                          marginBottom: "7px",
+                        }}
+                        buttonStyle={{
+                          flex: 1,
+                          textTransform: "none",
+                          padding: "12px",
+                          background: "none",
+                          border: "none",
+                        }}
+                      />
+
+                      <GoogleLogin
+                        className="google-btn d-flex justify-content-center"
+                        clientId={GOOGLE_CLIENT_ID}
+                        buttonText="Login with Google"
+                        onSuccess={loginWithGoogle}
+                        onFailure={(err) => {
+                          console.log("GOOGLE LOGIN ERROR:", err);
+                        }}
+                        cookiePolicy="single_host_origin"
+                      />
+                    </div>
+                    <div className="mt-2">
+                      <p style={{ color: "white" }}>
+                        Don't have an account?{" "}
+                        <Link to="/register">Sign Up</Link>
+                      </p>
+                    </div>
+
+                    <hr className="hr-light" />
+                    <div className="text-center d-flex justify-content-center black-label">
+                      <a href="#!" className="p-2 m-2">
+                        <FontAwesomeIcon icon={faTwitter} color={"black"} />
+                      </a>
+                      <a href="#!" className="p-2 m-2">
+                        <FontAwesomeIcon icon={faFacebookF} color={"black"} />
+                      </a>
+                      <a href="#!" className="p-2 m-2">
+                        <FontAwesomeIcon icon={faInstagram} color={"black"} />
+                      </a>
+                      <a href="#!" className="p-2 m-2">
+                        <FontAwesomeIcon icon={faYoutube} color={"black"} />
+                      </a>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    </div>
+  );
+};
+export default LoginPage;
+
+{
+  /* <Form.Text
                           className="white-text"
                           iconClass="white-text"
                           label="Your email"
@@ -174,8 +247,10 @@ const LoginPage = () => {
                           name="email"
                           onChange={handleTyping}
                           value={formData.email}
-                        />
-                        <MDBInput
+                        /> */
+}
+{
+  /* <MDBInput
                           className="white-text"
                           iconClass="white-text"
                           label="Your password"
@@ -184,87 +259,5 @@ const LoginPage = () => {
                           type="password"
                           onChange={handleTyping}
                           value={formData.password}
-                        />
-
-                        <MDBBtn color="indigo" type="submit">
-                          Sign In
-                        </MDBBtn>
-                      </form>
-
-                      <div className="d-flex flex-column text-center">
-                        <FacebookLogin
-                          appId={FB_APP_ID}
-                          fields="name,email,picture"
-                          callback={loginWithFacebook}
-                          icon="fa-facebook"
-                          onFailure={(err) => {
-                            console.log("FB LOGIN ERROR:", err);
-                          }}
-                          containerStyle={{
-                            textAlign: "center",
-                            backgroundColor: "#3b5998",
-                            borderColor: "#3b5998",
-                            flex: 1,
-                            display: "flex",
-                            color: "#fff",
-                            cursor: "pointer",
-                            marginBottom: "3px",
-                          }}
-                          buttonStyle={{
-                            flex: 1,
-                            textTransform: "none",
-                            padding: "12px",
-                            background: "none",
-                            border: "none",
-                          }}
-                        />
-
-                        <GoogleLogin
-                          className="google-btn d-flex justify-content-center"
-                          clientId={GOOGLE_CLIENT_ID}
-                          buttonText="Login with Google"
-                          onSuccess={loginWithGoogle}
-                          onFailure={(err) => {
-                            console.log("GOOGLE LOGIN ERROR:", err);
-                          }}
-                          cookiePolicy="single_host_origin"
-                        />
-                      </div>
-                      <div className="mt-2">
-                        <p style={{ color: "white" }}>
-                          Don't have an account?{" "}
-                          <Link to="/register">Sign Up</Link>
-                        </p>
-                      </div>
-
-                      <hr className="hr-light" />
-                      <div className="text-center d-flex justify-content-center white-label">
-                        <a href="#!" className="p-2 m-2">
-                          <MDBIcon fab icon="twitter" className="white-text" />
-                        </a>
-                        <a href="#!" className="p-2 m-2">
-                          <MDBIcon fab icon="linkedin" className="white-text" />
-                        </a>
-                        <a href="#!" className="p-2 m-2">
-                          <MDBIcon
-                            fab
-                            icon="instagram"
-                            className="white-text"
-                          />
-                        </a>
-                        <a href="#!" className="p-2 m-2">
-                          <MDBIcon fab icon="facebook" className="white-text" />
-                        </a>
-                      </div>
-                    </MDBCardBody>
-                  </MDBCard>
-                </MDBAnimation>
-              </MDBCol>
-            </MDBRow>
-          </MDBContainer>
-        </MDBMask>
-      </MDBView>
-    </div>
-  );
-};
-export default LoginPage;
+                        /> */
+}

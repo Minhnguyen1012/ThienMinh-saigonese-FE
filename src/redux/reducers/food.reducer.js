@@ -15,6 +15,14 @@ const foodReducer = (state = initialState, action) => {
       return { ...state, foods: payload, loading: false };
     case types.GET_FOODS_FAILURE:
       return { ...state, loading: false };
+
+    case types.GET_FOOD_INFO_REQUEST:
+      return { ...state, loading: true };
+    case types.GET_FOOD_INFO_SUCCESS:
+      return { ...state, selectedfood: payload, loading: false };
+    case types.GET_FOOD_INFO_FAILURE:
+      return { ...state, loading: false };
+
     default:
       return state;
   }

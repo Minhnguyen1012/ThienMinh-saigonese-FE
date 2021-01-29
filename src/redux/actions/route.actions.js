@@ -7,8 +7,8 @@ const removeRedirectTo = () => ({
   payload: null,
 });
 
-const routeActions = {
+export const routeActions = {
   redirect,
   removeRedirectTo,
 };
-export default routeActions;
+// export default routeActions;

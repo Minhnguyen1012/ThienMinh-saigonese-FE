@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import authActions from "../redux/actions/auth.actions";
 import TextField from "@material-ui/core/TextField";
 import logo2 from "../images/ganh-hang-rong.png";
-import routeActions from "../redux/actions/route.actions";
+import { routeActions } from "../redux/actions/route.actions";
 import { MDBAnimation, MDBCard, MDBCardBody, MDBCol } from "mdbreact";
 
 const RegisterPage = () => {

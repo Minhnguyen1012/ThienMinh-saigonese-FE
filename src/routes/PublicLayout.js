@@ -21,7 +21,6 @@ const PublicLayout = () => {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/foods/:id" component={DetailPage} />
-          <PrivateRoute exact path="/blog/add" component={AddEditBlogPage} />
           <PrivateRoute
             exact
             path="/blog/edit/:id"

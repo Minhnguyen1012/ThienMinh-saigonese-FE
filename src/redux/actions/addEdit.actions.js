@@ -1,4 +1,4 @@
-import * as types from "../constants/recipe.constants";
+import * as types from "../constants/addEdit.constants";
 import api from "../../apiService";
 import { routeActions } from "./route.actions";
 import { toast } from "react-toastify";
