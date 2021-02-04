@@ -82,18 +82,20 @@ export default function CustomizedMenus() {
           <ListItemIcon>
             <AddCircleIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText as={Link} to="/recipe/add">
-            Add Recipe
-          </ListItemText>
+
+          <Nav.Link style={{ color: "black" }} as={Link} to="/admin/food/add">
+            Recipe
+          </Nav.Link>
         </StyledMenuItem>
 
         <StyledMenuItem>
           <ListItemIcon>
             <SupervisorAccountIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText as={Link} to="/admin/profile">
+
+          <Nav.Link style={{ color: "black" }} as={Link} to="/admin">
             Admin
-          </ListItemText>
+          </Nav.Link>
         </StyledMenuItem>
 
         <StyledMenuItem>

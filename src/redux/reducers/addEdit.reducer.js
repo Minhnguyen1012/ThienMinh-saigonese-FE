@@ -3,7 +3,7 @@ import * as types from "../constants/recipe.constants";
 const initialState = {
   recipes: [],
   totalPageNum: 1,
-  selectedRecipe: null,
+  selectedNewProduct: null,
   loading: false,
 };
 
@@ -29,7 +29,7 @@ const AddEditReducer = (state = initialState, action) => {
       };
 
     case types.GET_SINGLE_RECIPE_REQUEST_SUCCESS:
-      return { ...state, selectedRecipe: payload, loading: false };
+      return { ...state, selectedNewProduct: payload, loading: false };
 
     case types.CREATE_RECIPE_SUCCESS:
       return {
@@ -40,7 +40,7 @@ const AddEditReducer = (state = initialState, action) => {
     case types.UPDATE_RECIPE_SUCCESS:
       return {
         ...state,
-        selectedRecipe: payload,
+        selectedNewProduct: payload,
         loading: false,
       };
 
@@ -48,7 +48,7 @@ const AddEditReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        selectedRecipe: {},
+        selectedNewProduct: {},
       };
 
     // Failure

@@ -97,7 +97,7 @@ const PublicNavbar = () => {
               <Nav.Link href="#link">Menu</Nav.Link>
               <Nav.Link href="/story">Our Stories</Nav.Link>
               <NavDropdown title="All Products" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/category/Vncuisine">
+                <NavDropdown.Item href="/category/vietnamese cuisine">
                   Vietnamese Cuisine
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/category/tea">Tea</NavDropdown.Item>

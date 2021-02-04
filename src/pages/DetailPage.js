@@ -1,30 +1,73 @@
-import React, { useEffect } from "react";
-import { Button, Card, CardGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Card, CardGroup, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import api from "../apiService";
+import CommentList from "../components/CommentList";
+import HoverRating from "../components/HoverRating";
 import PublicNavbar from "../components/PublicNavbar";
+import ReviewForm from "../components/ReviewForm";
 import foodActions from "../redux/actions/food.actions";
-import { routeActions } from "../redux/actions/route.actions";
+import reviewActions from "../redux/actions/review.actions";
+// import { routeActions } from "../redux/actions/route.actions";
 
 const DetailPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const loading = useSelector((state) => state.food.loading);
+  const Loading = useSelector((state) => state.food.loading);
+  const history = useHistory();
   const food = useSelector((state) => state.food.selectedfood);
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const [showComments, setShowComments] = useState(false);
+
+  const submitReviewLoading = useSelector(
+    (state) => state.theReviews.submitReviewLoading
+  );
+  const projectId = params.projectId;
+  const project = useSelector((state) => state.theReviews.selectedProject);
+  const [reviewText, setReviewText] = useState("");
+
+  const handleShowComments = () => {
+    if (showComments === false) {
+      setShowComments(true);
+    } else {
+      setShowComments(false);
+    }
+  };
+  const handleInputChange = (e) => {
+    setReviewText(e.target.value);
+  };
+  const handleSubmitReview = (e) => {
+    e.preventDefault();
+    dispatch(reviewActions.createReview(params.id, reviewText));
+    setReviewText("");
+  };
+
+  const handleDelete = () => {
+    dispatch(reviewActions.deleteReview(projectId));
+    history.goBack();
+  };
+  const handleEmojiClick = (targetType, targetId, emoji) => {
+    dispatch(reviewActions.postEmoji(targetType, targetId, emoji));
+  };
 
   useEffect(() => {
     dispatch(foodActions.foodsRequest());
-    console.log("adasfasd", params.id);
+
     console.log(params);
     if (params?.id) {
       dispatch(foodActions.getSingleFood(params.id));
     }
   }, [dispatch, params]);
 
+  useEffect(() => {
+    dispatch(reviewActions.getReviews(projectId));
+  }, [dispatch, projectId]);
+
   return (
     <>
-      {loading ? (
+      {Loading ? (
         <h1>.</h1>
       ) : (
         <>
@@ -55,10 +98,8 @@ const DetailPage = () => {
                 <div
                   className="detailCard flex-wrap flex-direction-row "
                   style={{
-                    // width: "19.1rem",
                     height: "100%",
                     margin: "18px",
-                    // border: "0.75px solid silver",
                   }}
                 >
                   <img
@@ -93,6 +134,7 @@ const DetailPage = () => {
                     >
                       {food?.info}
                     </h5>
+
                     <div class="body">
                       <a className="aa" href="#">
                         <div className="text">
@@ -108,23 +150,30 @@ const DetailPage = () => {
           </div>
         </>
       )}
+
+      {isAuthenticated && (
+        <Container>
+          <h1>Comments & Feedback</h1>
+          <HoverRating />
+          <ReviewForm
+            reviewText={reviewText}
+            handleInputChange={handleInputChange}
+            handleSubmitReview={handleSubmitReview}
+            loading={submitReviewLoading}
+          />
+        </Container>
+      )}
+      {/* {project?.reviews && ( */}
+      <>
+        <CommentList
+          // reviews={project.reviews[0].reviews}
+          handleEmojiClick={handleEmojiClick}
+          loading={submitReviewLoading}
+        />
+      </>
+      {/* )} */}
     </>
   );
-
-  // return (
-  //   <div>
-  //     {loading ? (
-  //       <h1> loadding...</h1>
-  //     ) : (
-  //       <>
-  //         <PublicNavbar />
-  //         asdsaa
-
-  //         <h1>thisshsdsafp</h1>
-  //       </>
-  //     )}
-  //   </div>
-  // );
 };
 
 export default DetailPage;

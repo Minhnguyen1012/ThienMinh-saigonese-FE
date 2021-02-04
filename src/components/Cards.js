@@ -2,18 +2,24 @@ import React, { useEffect } from "react";
 import { Button, Card, CardGroup, Image, NavLink, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { recipeActions } from "../redux/actions/addEdit.actions";
 import cartActions from "../redux/actions/cart.actions";
 
 const Cards = () => {
   const history = useHistory();
   const foods = useSelector((state) => state.food.foods);
   const dispatch = useDispatch();
-
+  const selectedNewProduct = useSelector(
+    (state) => state.food.selectedNewProduct
+  );
   if (foods) {
     console.log(foods[0]?.images[0]);
   }
   const handleClick = (id) => {
     history.push(`/foods/${id}`);
+  };
+  const handleDelete = (id) => {
+    dispatch(recipeActions.deleteRecipe(id));
   };
   const handleAddFoodToCart = (food) => {
     food.qty === undefined ? (food.qty = 1) : (food.qty += 1);
@@ -24,10 +30,9 @@ const Cards = () => {
       {foods &&
         foods.map((food) => (
           <CardGroup
-            onClick={() => handleClick(food?._id)}
+            // onClick={() => handleClick(food?._id)}
             className="post"
             style={{
-              // boxShadow: "-5px  5px 5px #888",
               width: "19rem",
               height: "33rem",
               margin: "18px 18px 40px 40px",
@@ -59,8 +64,14 @@ const Cards = () => {
                 variant="outline-warning"
                 onClick={() => handleClick(food?._id)}
               >
-                {" "}
                 Detail
+              </Button>
+
+              <Button
+                variant="outline-warning"
+                onClick={() => handleDelete(food?._id)}
+              >
+                Delete
               </Button>
             </Card.Body>
           </CardGroup>

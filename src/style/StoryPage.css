@@ -2,32 +2,38 @@
   display: flex;
   justify-content: center;
 }
-.left-side {
-  margin-right: 100px;
-  text-align: center;
+
+.left-side-2 {
+  padding: 30px;
+}
+.right-side2 {
+  padding: 5%;
+  text-align: justify;
   align-self: center;
 }
+.left-side {
+  align-self: center;
+  margin-right: 100px;
+  text-align: center;
+}
+/* .textInRow {
+  align-self: center;
+} */
 
 .cake {
-  margin-top: 30px;
+  margin: 30px;
 }
-/* .story-card {
-  border-bottom: 1px solid black;
-} */
 .right-side {
   padding-bottom: 20px;
 }
 .mini-story {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  margin-top: 3rem;
+
   text-align: center;
-  align-self: center;
+  justify-content: flex-start;
 }
 .caption {
   top: 50vh;
-  /* left: 50%; */
-  /* transform: translate(-20%, -50%); */
 }
 .textBox {
   animation: textup 12s linear infinite;

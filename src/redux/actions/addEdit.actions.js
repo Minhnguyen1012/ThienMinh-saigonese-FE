@@ -50,10 +50,18 @@ const getSingleRecipe = (recipeId) => async (dispatch) => {
   }
 };
 
-const createNewRecipe = (name, description, images) => async (dispatch) => {
+const createNewRecipe = (name, images, price, category, info) => async (
+  dispatch
+) => {
   dispatch({ type: types.CREATE_RECIPE_REQUEST, payload: null });
   try {
-    const res = await api.post("/recipes", { name, description, images });
+    const res = await api.post("/food", {
+      name,
+      images,
+      price,
+      category,
+      info,
+    });
 
     dispatch({
       type: types.CREATE_RECIPE_SUCCESS,
@@ -66,14 +74,16 @@ const createNewRecipe = (name, description, images) => async (dispatch) => {
   }
 };
 
-const updateRecipe = (recipeId, name, description, images) => async (
+const updateRecipe = (recipeId, name, images, price, category, info) => async (
   dispatch
 ) => {
   dispatch({ type: types.UPDATE_RECIPE_REQUEST, payload: null });
   try {
     const res = await api.put(`/recipes/${recipeId}`, {
       name,
-      description,
+      price,
+      category,
+      info,
       images,
     });
 
@@ -88,10 +98,10 @@ const updateRecipe = (recipeId, name, description, images) => async (
   }
 };
 
-const deleteRecipe = (recipeId) => async (dispatch) => {
+const deleteRecipe = (foodId) => async (dispatch) => {
   dispatch({ type: types.DELETE_RECIPE_REQUEST, payload: null });
   try {
-    const res = await api.delete(`/recipes/${recipeId}`);
+    const res = await api.delete(`/food/${foodId}`);
     console.log(res);
     dispatch({ type: types.DELETE_RECIPE_SUCCESS, payload: res.data });
     dispatch(routeActions.redirect("__GO_BACK__"));

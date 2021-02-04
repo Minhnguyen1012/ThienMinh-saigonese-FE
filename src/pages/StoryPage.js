@@ -1,11 +1,14 @@
 import React from "react";
-import { Carousel, Container, Row } from "react-bootstrap";
+import "../style/Carousel3.css";
+import { Carousel, Col, Container, Row } from "react-bootstrap";
 import CarouselsStory from "../components/CarouselsStory";
 import PublicNavbar from "../components/PublicNavbar";
 import "../style/StoryPage.css";
 import icon1 from "../images/res1.png";
 import icon2 from "../images/res2.png";
 import icon3 from "../images/res3.png";
+import Carousels3 from "../components/Carousel-3";
+import { Collapse } from "@material-ui/core";
 const StoryPage = () => {
   return (
     <>
@@ -38,7 +41,7 @@ const StoryPage = () => {
       <Container>
         <Row>
           <div
-            className="col mini-story d-flex"
+            className="col mini-story d-flex "
             style={{ flexDirection: "column" }}
           >
             <div>
@@ -61,7 +64,7 @@ const StoryPage = () => {
             </div>
 
             <h2>Thiết kế Retro</h2>
-            <p>Kiến trúc Retro sang trọng mang đậm nét Sài Gòn xưa</p>
+            <p>Kiến trúc Retro sang trọng mang đậm nét Sài Gòn xưa.</p>
           </div>
           <div
             className="col mini-story d-flex "
@@ -80,7 +83,44 @@ const StoryPage = () => {
         </Row>
       </Container>
 
-      <div style={{ backgroundColor: "rgb(247, 241, 227)" }}>
+      <Container
+        style={{
+          backgroundColor: "rgb(247, 241, 227)",
+          marginTop: "10vh",
+
+          maxHeight: "400vh",
+        }}
+      >
+        <Row className="textInRow ">
+          <Col className="left-side-2 d-flex">
+            <img
+              style={{ height: "70vh", width: "30vw" }}
+              src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/135753231_428466738498252_929470227142106004_n.jpg?_nc_cat=111&ccb=2&_nc_sid=0debeb&_nc_ohc=Z0xKOD3glRMAX8_RtE0&_nc_ht=scontent.fvca1-1.fna&oh=597ccb6d722e0050ac3f0d0ac5aab201&oe=603C6E68"
+              alt="food"
+            />
+            <Col className="right-side2 ">
+              <h3>Giai điệu ẩm thực đầy thăng hoa từ “Tinh tuý thuần Việt”</h3>
+              <p>
+                Thành lập năm 2021 và là một trong những thương hiệu hàng đầu
+                của La Sinfonía Hotels and Resorts Group, nhà hàng The Rhythms
+                lấy cảm hứng từ những đặc tính cơ bản của âm nhạc, ngân lên một
+                bản giao hưởng của ẩm thực Việt Nam chính hiệu, nhấn nhá với
+                những nét kiến trúc đương đại, tinh tế đến từng chi tiết. Tọa
+                lạc ở ngay trung tâm thủ đô Hà Nội với tầm nhìn tuyệt vời của hồ
+                Hoàn Kiếm và Phố Cổ, nhà hàng The Rhythms đem lại một trải
+                nghiệm ăn uống trọn vẹn, một sự hòa trộn hoàn hảo giữa di sản
+                địa phương và phong cách hiện đại, các công thức nấu ăn cổ điển
+                nâng tầm lên tiêu chuẩn quốc tế, với mong muốn tạo ra một cộng
+                đồng người yêu ẩm thực - nơi cả người dân địa phương và bạn bè
+                quốc tế có thể thưởng thức, trân trọng và quảng bá hương vị Việt
+                Nam rộng khắp khu vực.
+              </p>
+            </Col>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container>
         <center className="cake">
           <div>
             <div>
@@ -92,18 +132,10 @@ const StoryPage = () => {
                 thể thiếu những chiếc bánh lộng lẫy không kém phần hấp dẫn{" "}
               </p>
             </div>
-            <img
-              style={{
-                width: "500px",
-                height: "400px",
-                marginTop: "50px",
-                marginBottom: "70px",
-              }}
-              src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/127276761_400477531297173_4828146792317319777_o.jpg?_nc_cat=111&ccb=2&_nc_sid=730e14&_nc_ohc=lm_LVPkEb0MAX-W2S3k&_nc_ht=scontent.fvca1-1.fna&oh=d32577c8bf6f626c50a5b76f2cc49492&oe=6037FCE4"
-            ></img>
+            <Carousels3 />
           </div>
         </center>
-      </div>
+      </Container>
     </>
   );
 };

@@ -5,59 +5,64 @@ import { Form, Button, Container, ButtonGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-import { recipeActions } from "../redux/actions/addEdit.actions";
-import { routeActions } from "../redux/actions/route.actions";
+import { recipeActions } from "../../redux/actions/addEdit.actions";
+import { routeActions } from "../../redux/actions/route.actions";
 
 const AddOrEditProduct = () => {
   const [formData, setFormData] = useState({
     name: "",
-    description: "",
     images: [],
+    price: "",
+    category: "",
+    info: "",
   });
   const loading = useSelector((state) => state.food.loading);
   const dispatch = useDispatch();
   const history = useHistory();
   const params = useParams();
-  const selectedRecipe = useSelector((state) => state.food.selectedRecipe);
+  const selectedNewProduct = useSelector(
+    (state) => state.food.selectedNewProduct
+  );
   const redirectTo = useSelector((state) => state.route.redirectTo);
   const addOrEdit = params.id ? "Edit" : "Add";
   const recipeId = params.id;
 
   useEffect(() => {
     if (recipeId) {
-      if (!selectedRecipe) {
+      if (!selectedNewProduct) {
         dispatch(recipeActions.getSingleRecipe(recipeId));
       }
       setFormData((formData) => ({
         ...formData,
-        name: selectedRecipe.name,
-        description: selectedRecipe.description,
-        images: selectedRecipe.images,
+        name: selectedNewProduct.name,
+        price: selectedNewProduct.price,
+        images: selectedNewProduct.images,
+        category: selectedNewProduct.category,
+        info: selectedNewProduct.info,
       }));
     }
-  }, [recipeId, selectedRecipe, dispatch]);
-
+  }, [recipeId, selectedNewProduct, formData, dispatch]);
+  console.log(formData, " hi");
   const handleChange = (e) => {
-    if (e.target.name === "images") {
-      console.log(e.target.files);
-      setFormData({ ...formData, images: e.target.files });
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, images, price, category, info } = formData;
     if (addOrEdit === "Add") {
-      dispatch(recipeActions.createNewRecipe(name, images));
+      dispatch(
+        recipeActions.createNewRecipe(name, images, price, category, info)
+      );
     } else if (addOrEdit === "Edit") {
       dispatch(
         recipeActions.updateRecipe(
-          selectedRecipe._id,
+          selectedNewProduct._id,
           name,
-
-          images
+          images,
+          price,
+          category,
+          info
         )
       );
     }
@@ -68,7 +73,7 @@ const AddOrEditProduct = () => {
   };
 
   const handleDelete = () => {
-    dispatch(recipeActions.deleteRecipe(selectedRecipe._id));
+    dispatch(recipeActions.deleteRecipe(selectedNewProduct._id));
   };
 
   useEffect(() => {
@@ -88,7 +93,7 @@ const AddOrEditProduct = () => {
       <h1 className="text-center">{addOrEdit} Recipe</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="recipeName">
-          <Form.Label>Recipe name</Form.Label>
+          <Form.Label>Product name</Form.Label>
           <Form.Control
             required
             type="text"
@@ -99,14 +104,48 @@ const AddOrEditProduct = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="recipeName">
+        <Form.Group>
           <Form.Label>Image</Form.Label>
+          <Form.Control
+            required
+            type="file"
+            placeholder="Enter Url"
+            name="image"
+            value={formData.images}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>category</Form.Label>
           <Form.Control
             required
             type="text"
             placeholder="Enter Url"
-            name="image"
-            value={formData.images}
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>info</Form.Label>
+          <Form.Control
+            required
+            type="text"
+            placeholder="Enter Url"
+            name="info"
+            value={formData.info}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>price</Form.Label>
+          <Form.Control
+            required
+            type="number"
+            placeholder="Enter Url"
+            name="price"
+            value={formData.price}
             onChange={handleChange}
           />
         </Form.Group>

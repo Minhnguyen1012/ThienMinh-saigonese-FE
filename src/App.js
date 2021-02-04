@@ -2,6 +2,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+
 import DetailPage from "./pages/DetailPage";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
@@ -17,8 +18,10 @@ import { useEffect } from "react";
 import authActions from "./redux/actions/auth.actions";
 import VietnameseCuisine from "./pages/VietnameseCuisine";
 import MessengerCustomerChat from "react-messenger-customer-chat";
-import AddOrEditProduct from "./pages/AddOrEditProduct";
+import AddOrEditProduct from "./pages/Admin/AddOrEditProduct";
 import Navs from "./components/Navs";
+import PrivateRoute from "./routes/PrivateRoute";
+import AdminLayout from "./routes/AdminLayout";
 const App = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -52,7 +55,7 @@ const App = () => {
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/pay-method" component={PayNavigation} />
               <Route exact path="/story" component={StoryPage} />
-              <Route exact path="/recipe/add" component={AddOrEditProduct} />
+              <PrivateRoute path="/admin" component={AdminLayout} />
               <Route exact path="/navs" component={Navs} />
               <Route
                 exact
