@@ -46,6 +46,7 @@ const StyledMenuItem = withStyles((theme) => ({
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const currentUser = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.user);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -78,17 +79,22 @@ export default function CustomizedMenus() {
         <StyledMenuItem>
           <ListItemText>{currentUser?.name}</ListItemText>
         </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <AddCircleIcon fontSize="small" />
-          </ListItemIcon>
 
-          <Nav.Link style={{ color: "black" }} as={Link} to="/admin/food/add">
-            Recipe
-          </Nav.Link>
-        </StyledMenuItem>
+        {user?.role === "admin" ? (
+          <StyledMenuItem>
+            <ListItemIcon>
+              <AddCircleIcon fontSize="small" />
+            </ListItemIcon>
 
-        <StyledMenuItem>
+            <Nav.Link style={{ color: "black" }} as={Link} to="/admin/food/add">
+              Add Product
+            </Nav.Link>
+          </StyledMenuItem>
+        ) : (
+          <></>
+        )}
+
+        {/* <StyledMenuItem>
           <ListItemIcon>
             <SupervisorAccountIcon fontSize="small" />
           </ListItemIcon>
@@ -96,7 +102,7 @@ export default function CustomizedMenus() {
           <Nav.Link style={{ color: "black" }} as={Link} to="/admin">
             Admin
           </Nav.Link>
-        </StyledMenuItem>
+        </StyledMenuItem> */}
 
         <StyledMenuItem>
           <ListItemIcon>

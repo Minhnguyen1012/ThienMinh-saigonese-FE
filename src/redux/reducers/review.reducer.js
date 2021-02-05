@@ -33,7 +33,7 @@ const reviewReducer = (state = initialState, action) => {
         ...state,
         selectedProject: {
           ...state.selectedProject,
-          reviews: [payload],
+          reviews: payload.reviews,
         },
       };
 

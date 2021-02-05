@@ -1,6 +1,9 @@
-import { makeStyles } from "@material-ui/core";
+import { Avatar, makeStyles } from "@material-ui/core";
 import React from "react";
+import { Nav, NavDropdown } from "react-bootstrap";
 import Moment from "react-moment";
+import { useSelector } from "react-redux";
+import HoverRating from "./HoverRating";
 // import ReactionMaterial from "./ReactionMaterial";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +12,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CommentList = ({ reviews, handleEmojiClick, loading }) => {
+const CommentList = ({ handleEmojiClick, loading }) => {
+  const reviews = useSelector(
+    (state) => state.theReviews.selectedProject.reviews
+  );
+  const user = useSelector((state) => state.auth.user);
   return (
     <>
       {reviews?.length > 0 && (
@@ -34,22 +41,22 @@ const ReviewContent = ({ review, handleEmojiClick, loading }) => {
   return (
     <div className={classes.comment}>
       <hr />
+      <Nav
+        className="d-flex align-items-center "
+        aria-controls="customized-menu"
+        aria-haspopup="true"
+        variant="contained"
+        color="primary"
+      >
+        <Avatar alt="avatar" src={review?.user?.avatarUrl} />
+        <span className="comment_author ml-2">{review?.user?.name} </span>
+      </Nav>
       <span className="comment_body">{review?.content}</span>
       <br />
-      <span className="comment_by">posted by </span>
-      <span className="comment_author">{review?.user?.name}</span>
-      <span className="comment_on"> on </span>
+      <HoverRating />
       <span className="comment_date">
         <Moment fromNow>{review?.createdAt}</Moment>
       </span>
-      {/* <ReactionMaterial
-        reactionsData={review.reactions}
-        targetType="Review"
-        targetId={review._id}
-        handleEmojiClick={handleEmojiClick}
-        loading={loading}
-        size="xs"
-      /> */}
     </div>
   );
 };

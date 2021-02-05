@@ -1,8 +1,11 @@
+import { IconButton, makeStyles, Button, Divider } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Button, Card, CardGroup, Container } from "react-bootstrap";
+// import { Button, Card, CardGroup, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import api from "../apiService";
+
+import { Chat, Delete, Edit } from "@material-ui/icons";
 import CommentList from "../components/CommentList";
 import HoverRating from "../components/HoverRating";
 import PublicNavbar from "../components/PublicNavbar";
@@ -11,22 +14,54 @@ import foodActions from "../redux/actions/food.actions";
 import reviewActions from "../redux/actions/review.actions";
 // import { routeActions } from "../redux/actions/route.actions";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: "1rem",
+    display: "flex",
+    flexDirection: "column",
+    padding: "4rem",
+  },
+  textBox: {
+    // height: "18vh",
+    width: "100%",
+    backgroundColor: "#fff",
+    textAlign: "left",
+    alignContent: "center",
+    boxShadow: "2px 2px 4px #1b1e21",
+    borderRadius: "10px",
+    marginBottom: "5vh",
+    padding: theme.spacing(2),
+  },
+  btnGroup: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "end",
+    width: "100%",
+  },
+}));
+
 const DetailPage = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const params = useParams();
   const Loading = useSelector((state) => state.food.loading);
   const history = useHistory();
   const food = useSelector((state) => state.food.selectedfood);
-
+  const menuId = params.id;
+  console.log(menuId);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [showComments, setShowComments] = useState(false);
 
   const submitReviewLoading = useSelector(
     (state) => state.theReviews.submitReviewLoading
   );
-  const projectId = params.projectId;
+  const reviewId = params.reviewId;
   const project = useSelector((state) => state.theReviews.selectedProject);
   const [reviewText, setReviewText] = useState("");
+
+  useEffect(() => {
+    console.log(reviewText, "hi");
+  }, [reviewText]);
 
   const handleShowComments = () => {
     if (showComments === false) {
@@ -38,14 +73,17 @@ const DetailPage = () => {
   const handleInputChange = (e) => {
     setReviewText(e.target.value);
   };
+
   const handleSubmitReview = (e) => {
     e.preventDefault();
+
     dispatch(reviewActions.createReview(params.id, reviewText));
+    dispatch(reviewActions.getReviews(menuId));
     setReviewText("");
   };
 
   const handleDelete = () => {
-    dispatch(reviewActions.deleteReview(projectId));
+    dispatch(reviewActions.deleteReview(menuId));
     history.goBack();
   };
   const handleEmojiClick = (targetType, targetId, emoji) => {
@@ -62,8 +100,8 @@ const DetailPage = () => {
   }, [dispatch, params]);
 
   useEffect(() => {
-    dispatch(reviewActions.getReviews(projectId));
-  }, [dispatch, projectId]);
+    dispatch(reviewActions.getReviews(menuId));
+  }, [dispatch, menuId]);
 
   return (
     <>
@@ -150,28 +188,46 @@ const DetailPage = () => {
           </div>
         </>
       )}
-
       {isAuthenticated && (
-        <Container>
-          <h1>Comments & Feedback</h1>
-          <HoverRating />
-          <ReviewForm
-            reviewText={reviewText}
-            handleInputChange={handleInputChange}
-            handleSubmitReview={handleSubmitReview}
-            loading={submitReviewLoading}
-          />
-        </Container>
+        <>
+          <Divider />
+          <div className={classes.btnGroup}>
+            <hr />
+            <IconButton aria-label="comment" onClick={handleShowComments}>
+              <Chat />
+            </IconButton>
+            <IconButton aria-label="delete" onClick={handleDelete}>
+              <Delete />
+            </IconButton>
+          </div>
+        </>
       )}
-      {/* {project?.reviews && ( */}
-      <>
-        <CommentList
-          // reviews={project.reviews[0].reviews}
-          handleEmojiClick={handleEmojiClick}
-          loading={submitReviewLoading}
-        />
-      </>
-      {/* )} */}
+
+      {showComments === true && (
+        <div className={classes.textBox}>
+          <h5 id="commentsSection" className="text-left">
+            Comments:
+          </h5>
+          <HoverRating />
+          {isAuthenticated && (
+            <ReviewForm
+              reviewText={reviewText}
+              handleInputChange={handleInputChange}
+              handleSubmitReview={handleSubmitReview}
+              loading={submitReviewLoading}
+            />
+          )}
+          {project?.reviews && (
+            <>
+              {/* {console.log("object", project.reviews)} */}
+              <CommentList
+                handleEmojiClick={handleEmojiClick}
+                loading={submitReviewLoading}
+              />
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 };

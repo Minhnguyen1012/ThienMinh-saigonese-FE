@@ -107,9 +107,8 @@ const AddOrEditProduct = () => {
         <Form.Group>
           <Form.Label>Image</Form.Label>
           <Form.Control
-            required
             type="file"
-            placeholder="Enter Url"
+            // placeholder="Enter Url"
             name="image"
             value={formData.images}
             onChange={handleChange}

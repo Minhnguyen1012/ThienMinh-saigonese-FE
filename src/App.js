@@ -24,7 +24,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import AdminLayout from "./routes/AdminLayout";
 const App = () => {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isLoading = useSelector((state) => state.auth.loading);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -37,7 +37,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {isAuthenticated === null ? (
+      {isLoading === null ? (
         <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
           <img src="https://cdn.dribbble.com/users/2520294/screenshots/7209485/media/cf226d98a06282e9cabf5c2f8f6d547f.gif" />
         </div>

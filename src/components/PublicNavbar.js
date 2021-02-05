@@ -38,7 +38,7 @@ const PublicNavbar = () => {
       try {
         const res = await api.post(`/favorites`, addingProduct);
         setErrorMessage("");
-        toast.success("The book is added to reading list");
+        toast.success("The Product is added to shopping cart");
       } catch (error) {
         setErrorMessage(error.message);
       }
@@ -67,13 +67,6 @@ const PublicNavbar = () => {
       </Nav.Link>
     </Nav>
   );
-  // const changeBackground = () => {
-  //   if (window.scrollY >= 80) {
-  //     setNavbar(true);
-  //   } else {
-  //     setNavbar(false);
-  //   }
-  // };
 
   return (
     <>

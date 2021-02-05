@@ -8,6 +8,8 @@ import cartActions from "../redux/actions/cart.actions";
 const Cards = () => {
   const history = useHistory();
   const foods = useSelector((state) => state.food.foods);
+  const user = useSelector((state) => state.auth.user);
+
   const dispatch = useDispatch();
   const selectedNewProduct = useSelector(
     (state) => state.food.selectedNewProduct
@@ -25,6 +27,7 @@ const Cards = () => {
     food.qty === undefined ? (food.qty = 1) : (food.qty += 1);
     dispatch(cartActions.cartsRequest(food));
   };
+
   return (
     <Row className="thanh">
       {foods &&
@@ -67,12 +70,16 @@ const Cards = () => {
                 Detail
               </Button>
 
-              <Button
-                variant="outline-warning"
-                onClick={() => handleDelete(food?._id)}
-              >
-                Delete
-              </Button>
+              {user?.role === "admin" ? (
+                <Button
+                  variant="outline-warning"
+                  onClick={() => handleDelete(food?._id)}
+                >
+                  Delete
+                </Button>
+              ) : (
+                <></>
+              )}
             </Card.Body>
           </CardGroup>
         ))}

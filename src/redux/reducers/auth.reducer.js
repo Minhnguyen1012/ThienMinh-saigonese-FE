@@ -1,6 +1,6 @@
 import * as types from "../constants/auth.constants";
 const initialState = {
-  user: {},
+  user: { role: "" },
   isAuthenticated: null,
   loading: false,
 };
@@ -17,11 +17,17 @@ const authReducer = (state = initialState, action) => {
     case types.LOGIN_SUCCESS:
     case types.LOGIN_FACEBOOK_SUCCESS:
     case types.LOGIN_GOOGLE_SUCCESS:
-    case types.GET_CURRENT_USER_SUCCESS:
       return {
         ...state,
         user: payload.user,
         accessToken: payload.accessToken,
+        loading: false,
+        isAuthenticated: true,
+      };
+    case types.GET_CURRENT_USER_SUCCESS:
+      return {
+        ...state,
+        user: payload,
         loading: false,
         isAuthenticated: true,
       };
