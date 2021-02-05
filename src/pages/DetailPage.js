@@ -12,6 +12,7 @@ import PublicNavbar from "../components/PublicNavbar";
 import ReviewForm from "../components/ReviewForm";
 import foodActions from "../redux/actions/food.actions";
 import reviewActions from "../redux/actions/review.actions";
+import { Container } from "react-bootstrap";
 // import { routeActions } from "../redux/actions/route.actions";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     textAlign: "left",
     alignContent: "center",
-    boxShadow: "2px 2px 4px #1b1e21",
+    border: "0.5px solid grey",
     borderRadius: "10px",
     marginBottom: "5vh",
     padding: theme.spacing(2),
@@ -110,7 +111,14 @@ const DetailPage = () => {
       ) : (
         <>
           <PublicNavbar />
-
+          <div id="fb-root"></div>
+          <script
+            async
+            defer
+            crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0&appId=150211800209794&autoLogAppEvents=1"
+            nonce="MDf2duU3"
+          ></script>
           <div
             style={{
               paddingTop: "72px",
@@ -136,6 +144,7 @@ const DetailPage = () => {
                 <div
                   className="detailCard flex-wrap flex-direction-row "
                   style={{
+                    paddingLeft: "30px",
                     height: "100%",
                     margin: "18px",
                   }}
@@ -169,9 +178,7 @@ const DetailPage = () => {
                         textAlign: " center",
                         alignSelf: " center",
                       }}
-                    >
-                      {food?.info}
-                    </h5>
+                    ></h5>
 
                     <div class="body">
                       <a className="aa" href="#">
@@ -188,22 +195,42 @@ const DetailPage = () => {
           </div>
         </>
       )}
-      {isAuthenticated && (
-        <>
-          <Divider />
-          <div className={classes.btnGroup}>
-            <hr />
-            <IconButton aria-label="comment" onClick={handleShowComments}>
-              <Chat />
-            </IconButton>
-            <IconButton aria-label="delete" onClick={handleDelete}>
-              <Delete />
-            </IconButton>
-          </div>
-        </>
-      )}
+      {/* TODO make a btn to show more text */}
+      <Container className="mt-5">
+        <h1>History</h1>
+        <hr />
+        <h4>{food?.name}</h4>
+        <div>{food?.info}</div>
+        {/* {food?.info?.length < 90
+          ? food?.info
+          : food?.info.slice(0, 201) + " ..."} */}
+        <p style={{ marginTop: "15px", float: "right", color: "grey" }}>
+          Source: Wikipedia
+        </p>
+      </Container>
+      <Container className="mt-5">
+        <h1>Comment and FeedBack</h1>
+        {isAuthenticated && (
+          <>
+            <Divider />
+            <div className={classes.btnGroup}>
+              <hr />
+              <IconButton aria-label="comment" onClick={handleShowComments}>
+                <Chat />
+              </IconButton>
+              <IconButton aria-label="delete" onClick={handleDelete}>
+                <Delete />
+              </IconButton>
+            </div>
+          </>
+        )}
+        {/* <div
+        class="fb-comments"
+        data-href="https://saigonese-final.netlify.app"
+        data-width=""
+        data-numposts="5"
+      ></div> */}
 
-      {showComments === true && (
         <div className={classes.textBox}>
           <h5 id="commentsSection" className="text-left">
             Comments:
@@ -227,7 +254,7 @@ const DetailPage = () => {
             </>
           )}
         </div>
-      )}
+      </Container>
     </>
   );
 };

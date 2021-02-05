@@ -29,7 +29,7 @@ const Cards = () => {
   };
 
   return (
-    <Row className="thanh">
+    <div className="thanh">
       {foods &&
         foods.map((food) => (
           <CardGroup
@@ -41,8 +41,9 @@ const Cards = () => {
               margin: "18px 18px 40px 40px",
             }}
           >
-            <Card.Img
+            <img
               style={{
+                borderRadius: "30px 30px 0px 0px",
                 width: "19rem",
                 height: "22.3rem",
                 objectFit: "cover",
@@ -83,7 +84,7 @@ const Cards = () => {
             </Card.Body>
           </CardGroup>
         ))}
-    </Row>
+    </div>
   );
 };
 

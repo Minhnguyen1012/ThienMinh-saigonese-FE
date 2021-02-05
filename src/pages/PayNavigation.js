@@ -13,7 +13,7 @@ import authActions from "../redux/actions/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { routeActions } from "../redux/actions/route.actions";
-
+import gif from "../images/thanks.gif";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -116,7 +116,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       {loading && loading ? (
         <h1>minh</h1>
       ) : (
-        <Container>
+        <Container className="Shipping">
           <div className={classes.root}>
             <Stepper activeStep={activeStep} alternativeLabel>
               {steps.map((label) => (
@@ -128,10 +128,28 @@ export default function HorizontalLabelPositionBelowStepper() {
             <div>
               {activeStep === steps.length ? (
                 <div>
-                  <Typography className={classes.instructions}>
-                    All steps completed
+                  <Typography
+                    className={classes.instructions}
+                    style={{
+                      fontSize: "20px",
+                      textAlign: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    All steps completed. Thank you for Shopping with us ❣️
+                    <img
+                      style={{ maxWidth: "40vw", marginLeft: "19rem" }}
+                      src="https://cdn.dribbble.com/users/126069/screenshots/2253470/screengif7.gif"
+                      alt="gif"
+                    />
                   </Typography>
-                  <Button onClick={handleReset}>Reset</Button>
+                  <Button
+                    style={{ backgroundColor: "#a29bfe" }}
+                    onClick={handleReset}
+                  >
+                    Reset
+                  </Button>
                 </div>
               ) : (
                 <div>

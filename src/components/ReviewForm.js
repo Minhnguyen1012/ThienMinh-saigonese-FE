@@ -8,10 +8,8 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
   },
   textField: {
-    // marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: "100%",
-    // flexGrow: 1,
   },
   btn: {
     // marginLeft: theme.spacing(1),

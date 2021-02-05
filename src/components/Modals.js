@@ -125,8 +125,9 @@ const Modals = () => {
               onClick={() => handleSubmit()}
               type="button"
               className="btn btn-success"
+              href="/pay-method"
             >
-              Buy
+              Save
             </button>
           </div>
         </Modal.Body>

@@ -44,14 +44,17 @@ export default function ReviewPay() {
   return (
     <React.Fragment>
       <Typography className="ml-2 mr-2" variant="h6" gutterBottom>
-        Order summary
+        <strong> Order summary</strong>
       </Typography>
       <List className="ml-4 mr-4" disablePadding>
         {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
-          </ListItem>
+          <>
+            <ListItem className={classes.listItem} key={product.name}>
+              <ListItemText primary={product.name} secondary={product.desc} />
+              <Typography variant="body2">{product.price}</Typography>
+            </ListItem>
+            <hr />
+          </>
         ))}
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
@@ -63,14 +66,14 @@ export default function ReviewPay() {
       <Grid className="ml-2 mr-2" container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
-            Shipping
+            <strong>Shipping</strong>
           </Typography>
           <Typography gutterBottom>Sam Smith</Typography>
           <Typography gutterBottom>{addresses.join(", ")}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom className={classes.title}>
-            Payment details
+            <strong> Payment details</strong>
           </Typography>
           <Grid container>
             {payments.map((payment) => (

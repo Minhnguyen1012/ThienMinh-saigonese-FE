@@ -3,7 +3,7 @@ import PublicNavbar from "../components/PublicNavbar";
 import React, { useEffect } from "react";
 import Carousels from "../components/Carousels";
 import Cards from "../components/Cards";
-import { Button, Container } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import HoverRating from "../components/HoverRating";
 import homeImage from "../images/homeImage.jpeg";
 import foodActions from "../redux/actions/food.actions";
@@ -21,9 +21,18 @@ const Homepage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div
+      style={{
+        paddingTop: "72px",
+
+        backgroundColor: "#EEEAE0",
+        // backgroundRepeat: true,
+        // backgroundSize: "70vw, 70vh",
+      }}
+    >
       <PublicNavbar />
       <Carousels />
+
       <div className="d-flex justify-content-between ml-5 mt-5 mr-5">
         <h1 className="text-menu">Menu</h1>
         <div>
@@ -48,7 +57,7 @@ const Homepage = () => {
       />
 
       <HoverRating />
-    </>
+    </div>
   );
 };
 

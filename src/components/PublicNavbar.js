@@ -87,13 +87,14 @@ const PublicNavbar = () => {
               <Nav.Link className="hove" href="/">
                 Home
               </Nav.Link>
-              <Nav.Link href="#link">Menu</Nav.Link>
+              <Nav.Link href="/menu">Menu</Nav.Link>
               <Nav.Link href="/story">Our Stories</Nav.Link>
               <NavDropdown title="All Products" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/category/vietnamese cuisine">
                   Vietnamese Cuisine
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/category/tea">Tea</NavDropdown.Item>
+                <NavDropdown.Item href="/category/cafe">Cafe</NavDropdown.Item>
                 <NavDropdown.Item href="/category/dessert">
                   Dessert
                 </NavDropdown.Item>

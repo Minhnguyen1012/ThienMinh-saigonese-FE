@@ -22,6 +22,7 @@ import AddOrEditProduct from "./pages/Admin/AddOrEditProduct";
 import Navs from "./components/Navs";
 import PrivateRoute from "./routes/PrivateRoute";
 import AdminLayout from "./routes/AdminLayout";
+import MainPage from "./pages/MainPage";
 const App = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.auth.loading);
@@ -57,6 +58,7 @@ const App = () => {
               <Route exact path="/story" component={StoryPage} />
               <PrivateRoute path="/admin" component={AdminLayout} />
               <Route exact path="/navs" component={Navs} />
+              <Route exact path="/menu" component={MainPage} />
               <Route
                 exact
                 path="/category/:category"
