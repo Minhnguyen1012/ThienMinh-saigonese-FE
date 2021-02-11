@@ -1,7 +1,12 @@
 body {
   overflow-x: hidden;
 }
-
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Oleo+Script:wght@700&display=swap");
+.GGFONT {
+  font-family: "Oleo Script", cursive;
+  color: #efefef;
+  font-size: 30px;
+}
 .navbar {
   padding: 0px !important;
   font-size: 21px;
@@ -17,6 +22,28 @@ body {
 .navbar-color {
   background-color: rgba(160, 154, 154, 0.4) !important;
 }
+.hover-border {
+  position: relative;
+  text-decoration: none;
+}
+
+.hover-border::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(170, 151, 101);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+.hover-border:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
 /*  */
 #loginn .view {
   background-image: url(./images/saigon-night.jpg);
@@ -27,7 +54,7 @@ body {
 }
 
 #loginn .card {
-  background-color: rgba(5, 5, 5, 0.349);
+  background-color: rgba(136, 130, 130, 0.349);
 }
 
 #loginn .card-body {
@@ -142,11 +169,6 @@ footer {
 }
 .color-cart {
   color: black;
-}
-
-/*  */
-.hove:hover {
-  color: #aa9765;
 }
 
 /* detail */

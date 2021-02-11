@@ -73,7 +73,8 @@ const Cards = () => {
 
               {user?.role === "admin" ? (
                 <Button
-                  variant="outline-warning"
+                  className="ml-3"
+                  variant="danger"
                   onClick={() => handleDelete(food?._id)}
                 >
                   Delete

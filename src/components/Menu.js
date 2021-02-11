@@ -10,7 +10,7 @@ import { Nav } from "react-bootstrap";
 import authActions from "../redux/actions/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const StyledMenu = withStyles({
   paper: {
@@ -67,7 +67,11 @@ export default function CustomizedMenus() {
         color="primary"
         onClick={handleClick}
       >
-        <Avatar alt="avatar" src={currentUser?.avatarUrl} />
+        <Avatar
+          // className="text-align-center"
+          alt="avatar"
+          src={currentUser?.avatarUrl}
+        />
       </Nav.Link>
       <StyledMenu
         id="customized-menu"
@@ -77,32 +81,28 @@ export default function CustomizedMenus() {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ListItemText>{currentUser?.name}</ListItemText>
+          <ListItemText style={{ textAlign: "center" }}>
+            {currentUser?.name}
+          </ListItemText>
         </StyledMenuItem>
-
         {user?.role === "admin" ? (
-          <StyledMenuItem>
-            <ListItemIcon>
-              <AddCircleIcon fontSize="small" />
-            </ListItemIcon>
-
-            <Nav.Link style={{ color: "black" }} as={Link} to="/admin/food/add">
-              Add Product
-            </Nav.Link>
-          </StyledMenuItem>
+          <>
+            <StyledMenuItem>
+              <ListItemIcon>
+                <AddCircleIcon fontSize="small" />
+              </ListItemIcon>
+              <Nav.Link
+                style={{ color: "black" }}
+                as={Link}
+                to="/admin/food/add"
+              >
+                Add Product
+              </Nav.Link>
+            </StyledMenuItem>
+          </>
         ) : (
           <></>
         )}
-
-        {/* <StyledMenuItem>
-          <ListItemIcon>
-            <SupervisorAccountIcon fontSize="small" />
-          </ListItemIcon>
-
-          <Nav.Link style={{ color: "black" }} as={Link} to="/admin">
-            Admin
-          </Nav.Link>
-        </StyledMenuItem> */}
 
         <StyledMenuItem>
           <ListItemIcon>

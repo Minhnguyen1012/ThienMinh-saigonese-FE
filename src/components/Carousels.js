@@ -16,13 +16,13 @@ const Carousels = () => {
   return (
     <>
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        <Carousel.Item style={{ background: "#000" }}>
+        <Carousel.Item style={{ background: "black" }}>
           <img
             style={{
-              maxHeight: "670px",
+              maxHeight: "660px",
               width: "100vw",
               objectFit: "cover",
-              opacity: " 0.65 ",
+              opacity: " 0.4 ",
             }}
             className="moreColor"
             src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/67814508_112935776718018_8909687086051753984_o.png?_nc_cat=100&ccb=2&_nc_sid=174925&_nc_ohc=01UibYlyGV8AX_cT_gn&_nc_ht=scontent.fvca1-2.fna&oh=1e20e89b1bbc973297a7f1449f8e4bdb&oe=602C20DD"

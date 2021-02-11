@@ -1,7 +1,10 @@
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneSquareAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMapMarkedAlt,
+  faPhoneSquareAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 import logoo from "../images/chef2.png";
 import {
@@ -28,7 +31,14 @@ const Footer = () => {
         </div>
         <div className="footerBox">
           <div>
-            <p>Filips van Bourgondiëlaan 47 , 3703 XA Zeist, Netherlands </p>
+            <p style={{ fontSize: "18px" }}>
+              <FontAwesomeIcon
+                className="mr-3"
+                icon={faMapMarkedAlt}
+                size={"2x"}
+              />
+              Filips van Bourgondiëlaan 47 , 3703 XA Zeist, Netherlands{" "}
+            </p>
 
             <div className="flexify">
               <FontAwesomeIcon icon={faPhoneSquareAlt} size={"lg"} />
@@ -42,7 +52,6 @@ const Footer = () => {
         </div>
         <div className="footerBox">
           <div>
-            {/* <h3>Follow us:</h3> */}
             <div className="d-flex">
               <div>
                 <FontAwesomeIcon

@@ -23,11 +23,9 @@ const Homepage = () => {
   return (
     <div
       style={{
-        paddingTop: "72px",
+        // paddingTop: "72px",
 
         backgroundColor: "#EEEAE0",
-        // backgroundRepeat: true,
-        // backgroundSize: "70vw, 70vh",
       }}
     >
       <PublicNavbar />
@@ -55,8 +53,6 @@ const Homepage = () => {
         pageId="150211800209794"
         appId="m.me/103840071695085"
       />
-
-      <HoverRating />
     </div>
   );
 };

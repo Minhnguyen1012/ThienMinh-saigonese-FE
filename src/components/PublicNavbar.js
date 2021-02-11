@@ -9,6 +9,16 @@ import api from "../apiService";
 import { toast } from "react-toastify";
 import CustomizedMenus from "./Menu";
 
+import {
+  faCocktail,
+  faCoffee,
+  faIceCream,
+  faSun,
+  faUtensils,
+  faUtensilSpoon,
+} from "@fortawesome/free-solid-svg-icons";
+import { faPagelines } from "@fortawesome/free-brands-svg-icons";
+
 const PublicNavbar = () => {
   const loading = useSelector((state) => state.auth.loading);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -70,34 +80,83 @@ const PublicNavbar = () => {
 
   return (
     <>
-      <nav>
+      <div>
         <Navbar
+          expand="lg"
           fixed="top"
           className={scrollY > 0 ? "navbar-no-color " : "navbar-color"}
           variant="dark"
         >
           <Navbar.Brand>
-            <Nav.Link as={NavLink} exact={true} to="/login">
-              <img src={logo} alt="saigonese" />
+            <Nav.Link>
+              <Link
+                to="/"
+                className="GGFONT"
+                style={{ textDecorationLine: "none", color: "white" }}
+              >
+                SAIGONESE
+              </Link>
+              {/* <img src={logo} alt="saigonese" /> */}
             </Nav.Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link className="hove" href="/">
+              <Nav.Link className="hover-border" href="/">
                 Home
               </Nav.Link>
-              <Nav.Link href="/menu">Menu</Nav.Link>
-              <Nav.Link href="/story">Our Stories</Nav.Link>
+              <Nav.Link className="hover-border" href="/menu">
+                Menu
+              </Nav.Link>
+              <Nav.Link className="hover-border" href="/story">
+                Our Stories
+              </Nav.Link>
               <NavDropdown title="All Products" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/category/vietnamese cuisine">
-                  Vietnamese Cuisine
-                </NavDropdown.Item>
-                <NavDropdown.Item href="/category/tea">Tea</NavDropdown.Item>
-                <NavDropdown.Item href="/category/cafe">Cafe</NavDropdown.Item>
-                <NavDropdown.Item href="/category/dessert">
-                  Dessert
-                </NavDropdown.Item>
+                <div style={{ fontSize: "17px", textAlign: "left" }}>
+                  <NavDropdown.Item href="/category/vietnamese cuisine">
+                    <FontAwesomeIcon
+                      className="mr-2"
+                      icon={faUtensilSpoon}
+                      size={"lg"}
+                    />
+                    Vnmese Cuisine
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/category/tea">
+                    {" "}
+                    <FontAwesomeIcon
+                      className="mr-2"
+                      icon={faPagelines}
+                      size={"lg"}
+                      color={"green"}
+                    />
+                    Tea
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/category/cafe">
+                    {" "}
+                    <FontAwesomeIcon
+                      className="mr-2"
+                      icon={faCoffee}
+                      size={"lg"}
+                    />
+                    Cafe
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/category/drink">
+                    <FontAwesomeIcon
+                      className="mr-2"
+                      icon={faCocktail}
+                      size={"lg"}
+                    />
+                    Drink
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/category/dessert">
+                    <FontAwesomeIcon
+                      className="mr-2"
+                      icon={faIceCream}
+                      size={"lg"}
+                    />
+                    Dessert
+                  </NavDropdown.Item>
+                </div>
                 <NavDropdown.Divider />
               </NavDropdown>
             </Nav>
@@ -107,7 +166,7 @@ const PublicNavbar = () => {
             </Navbar.Collapse>
           </Navbar.Collapse>
         </Navbar>
-      </nav>
+      </div>
     </>
   );
 };

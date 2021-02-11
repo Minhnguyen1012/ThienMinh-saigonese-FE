@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import authActions from "../redux/actions/auth.actions";
@@ -58,10 +58,17 @@ const RegisterPage = () => {
     <div>
       <Row>
         <Col lg={5}>
-          <MDBCol className="mt-5 ml-4">
-            <MDBAnimation type="fadeInRight" delay=".3s">
-              <MDBCard id="classic-card">
-                <MDBCardBody>
+          <Col className="">
+            <div
+              style={{
+                border: "1px solid black",
+                width: "30vw",
+                marginTop: "6rem",
+                margin: "3rem",
+              }}
+            >
+              <Card id="classic-card">
+                <Card.Body>
                   <div className="text-center mb-3">
                     <h1 className="poppin">Sign Up</h1>
                     <p className="lead">
@@ -70,16 +77,7 @@ const RegisterPage = () => {
                     </p>
                   </div>
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group>
-                      {/* <TextField
-                        style={{ width: "100%" }}
-                        type="text"
-                        placeholder="Avatar"
-                        name="avatarUrl"
-                        value={formData.avatarUrl}
-                        onChange={handleChange}
-                      /> */}
-                    </Form.Group>
+                    <Form.Group></Form.Group>
                     <Form.Group>
                       <TextField
                         style={{ width: "100%" }}
@@ -163,16 +161,16 @@ const RegisterPage = () => {
                       Already have an account? <Link to="/login">Sign In</Link>
                     </p>
                   </Form>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBAnimation>
-          </MDBCol>
+                </Card.Body>
+              </Card>
+            </div>
+          </Col>
         </Col>
         <Col lg={5}>
           <img
-            src="https://media-cdn.tripadvisor.com/media/photo-w/15/26/4c/0e/crispy-brown-rice.jpg"
-            alt="CoderSchool"
-            style={{ width: "100%" }}
+            src="https://scontent.fvca1-1.fna.fbcdn.net/v/t31.0-8/17917700_477536202577864_5293261151577071588_o.jpg?_nc_cat=105&ccb=3&_nc_sid=cdbe9c&_nc_ohc=4rX_1GKslxEAX_LbOX1&_nc_ht=scontent.fvca1-1.fna&oh=f64a0da7ce8ddc7af7c1f5ea5991f7ad&oe=60496A6C"
+            alt="signUp"
+            style={{ width: "800px" }}
           />
         </Col>
       </Row>

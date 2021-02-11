@@ -25,8 +25,8 @@ import AdminLayout from "./routes/AdminLayout";
 import MainPage from "./pages/MainPage";
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.auth.loading);
-
+  // const isLoading = useSelector((state) => state.auth.loading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken && accessToken !== "undefined") {
@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {isLoading === null ? (
+      {isAuthenticated === null ? (
         <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
           <img src="https://cdn.dribbble.com/users/2520294/screenshots/7209485/media/cf226d98a06282e9cabf5c2f8f6d547f.gif" />
         </div>

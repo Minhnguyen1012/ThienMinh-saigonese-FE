@@ -30,8 +30,8 @@ const StoryPage = () => {
             </div>
             <div className="right-side">
               <img
-                style={{ height: "60vh", width: "35vw" }}
-                src="https://www.vn.therhythmsrestaurant.com/img-demo/utils/story.jpg"
+                style={{ height: "70vh", width: "35vw" }}
+                src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/118357979_1307116959619780_112868968814683093_o.jpg?_nc_cat=106&ccb=3&_nc_sid=8bfeb9&_nc_ohc=pzeaclpCsPgAX82Lxn5&_nc_ht=scontent.fvca1-1.fna&oh=c505b0ce59a09bf2225cf15ea237c18b&oe=604BA8FE"
                 alt="food"
               />
             </div>

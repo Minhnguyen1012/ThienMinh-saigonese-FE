@@ -100,9 +100,9 @@ const LoginPage = () => {
       <div
         style={{
           paddingTop: "72px",
-          opacity: "0.7",
+
           backgroundImage:
-            "url(https://i.pinimg.com/originals/64/21/5e/64215eed9b316d9dee8ec96b57b55c46.jpg)",
+            "url(https://scontent.fhan3-2.fna.fbcdn.net/v/t31.0-8/23916687_583558578642292_859434436310435707_o.jpg?_nc_cat=111&ccb=3&_nc_sid=730e14&_nc_ohc=9akSzarpY1sAX9f79-M&_nc_ht=scontent.fhan3-2.fna&oh=211b1a7d201ee4a620cbe8d82e21245e&oe=604C4AE6)",
           backgroundRepeat: "no-repeat",
           backgroundSize: "100vw",
           objectFit: "cover",
@@ -111,20 +111,18 @@ const LoginPage = () => {
         <Container>
           <Row>
             <div
-              type="fadeInLeft"
               delay="0.3s"
-              className="  text-md-left col-md-6 mt-xl-5 mb-5"
+              className="mt-5 text-md-left col-md-6 mt-xl-5 mb-5"
               style={{ color: "white" }}
             >
               <h1 className="h1-responsive font-weight-bold">Sign in</h1>
-              <hr className="hr-light" />
-              <h6 className="mb-4">
+              <hr color="white" />
+              <h6 className="">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
                 repellendus quasi fuga nesciunt dolorum nulla magnam veniam
                 sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
                 quisquam iste, maiores. Nulla.
               </h6>
-              <Card.Text color="white">Learn More</Card.Text>
             </div>
 
             <Col md="6" xl="5" className="mb-4">
@@ -144,7 +142,7 @@ const LoginPage = () => {
                           onChange={handleTyping}
                           value={formData.email}
                         />
-                        <Form.Text className="text-muted">
+                        <Form.Text style={{ color: "white" }}>
                           We'll never share your email with anyone else.
                         </Form.Text>
                       </Form.Group>
@@ -159,10 +157,12 @@ const LoginPage = () => {
                           value={formData.password}
                         />
                       </Form.Group>
-
-                      <Button className="mb-2 " onClick={handleSubmit}>
-                        Sign In
-                      </Button>
+                      <div style={{ marginLeft: "100px" }}>
+                        <Button className="mb-2 " onClick={handleSubmit}>
+                          Sign In
+                        </Button>
+                      </div>
+                      <hr color="white" />
                     </form>
 
                     <div className="d-flex flex-column text-center">
