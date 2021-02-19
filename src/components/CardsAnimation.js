@@ -173,6 +173,13 @@ const CardsAnimation = () => {
                   </div>
                   <div className="job">
                     <h5 className="text-menu "> {food?.price * 1000} VND</h5>
+                    <Button
+                      className="circle-btn"
+                      variant="outline-warning"
+                      onClick={() => handleClick(food?._id)}
+                    >
+                      Detail
+                    </Button>
                   </div>
                 </div>
               </div>

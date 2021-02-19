@@ -55,19 +55,21 @@ const RegisterPage = () => {
   }, [dispatch, history, redirectTo]);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#2f3640" }}>
       <Row>
         <Col lg={5}>
-          <Col className="">
+          <Col>
             <div
               style={{
-                border: "1px solid black",
                 width: "30vw",
-                marginTop: "6rem",
+                marginTop: "8rem",
                 margin: "3rem",
+                marginLeft: "50px",
+                backgroundColor: "rgba(227, 222, 222)",
+                borderRadius: "10px",
               }}
             >
-              <Card id="classic-card">
+              <div className=" cardds">
                 <Card.Body>
                   <div className="text-center mb-3">
                     <h1 className="poppin">Sign Up</h1>
@@ -162,7 +164,7 @@ const RegisterPage = () => {
                     </p>
                   </Form>
                 </Card.Body>
-              </Card>
+              </div>
             </div>
           </Col>
         </Col>

@@ -113,15 +113,15 @@ const LoginPage = () => {
             <div
               delay="0.3s"
               className="mt-5 text-md-left col-md-6 mt-xl-5 mb-5"
-              style={{ color: "white" }}
+              style={{ color: "white", marginTop: "6rem" }}
             >
               <h1 className="h1-responsive font-weight-bold">Sign in</h1>
               <hr color="white" />
               <h6 className="">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
-                repellendus quasi fuga nesciunt dolorum nulla magnam veniam
-                sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
-                quisquam iste, maiores. Nulla.
+                The Saigonese với phương châm mang đến cho bạn những món ăn đậm
+                đà hương vị Việt , xen lẫn những món ăn phá cách Á-Âu hiện đại .
+                Hãy đến và cảm nhận rằng " The Saigonese " sẽ không làm bạn thất
+                vọng
               </h6>
             </div>
 
