@@ -9,9 +9,9 @@ const Carousels = () => {
     setIndex(selectedIndex);
   };
 
-  useEffect(() => {
-    if (index != 0) setIndex(0);
-  }, [index]);
+  // useEffect(() => {
+  //   if (index != 0) setIndex(0);
+  // }, [index]);
 
   return (
     <>
@@ -25,7 +25,7 @@ const Carousels = () => {
               opacity: " 0.4 ",
             }}
             className="moreColor"
-            src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/67814508_112935776718018_8909687086051753984_o.png?_nc_cat=100&ccb=2&_nc_sid=174925&_nc_ohc=01UibYlyGV8AX_cT_gn&_nc_ht=scontent.fvca1-2.fna&oh=1e20e89b1bbc973297a7f1449f8e4bdb&oe=602C20DD"
+            src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/67814508_112935776718018_8909687086051753984_o.png?_nc_cat=100&ccb=3&_nc_sid=174925&_nc_ohc=4_c75Ig_eBAAX_XaHfh&_nc_ht=scontent.fvca1-2.fna&oh=1b26d002c6f415871526e6e2281dc69c&oe=6053ADDD"
             alt="First slide"
           />
           <Carousel.Caption className="caption textBox">
@@ -43,7 +43,7 @@ const Carousels = () => {
               opacity: " 0.65 ",
             }}
             className="moreColor "
-            src="https://scontent.fvca1-2.fna.fbcdn.net/v/t1.0-9/120704147_356835122328081_5625372247513510637_o.jpg?_nc_cat=101&ccb=2&_nc_sid=730e14&_nc_ohc=pLrMn-OjnAUAX8FERG7&_nc_ht=scontent.fvca1-2.fna&oh=5b91a40a53132e60c0fe8583d7633731&oe=602BCC4B"
+            src="https://scontent-hkg4-2.xx.fbcdn.net/v/t1.0-9/118528750_1310786412586168_1268443967326834178_o.jpg?_nc_cat=110&ccb=3&_nc_sid=8bfeb9&_nc_ohc=PtdL8JeW5MsAX_z1YxA&_nc_ht=scontent-hkg4-2.xx&oh=92265ffba709188660740ece0ed1d8ca&oe=60502039"
             alt="Second slide"
           />
 
@@ -61,7 +61,7 @@ const Carousels = () => {
               opacity: "  0.65 ",
             }}
             className="moreColor"
-            src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/101977439_266331174711810_7685097732619429305_o.jpg?_nc_cat=103&ccb=2&_nc_sid=730e14&_nc_ohc=IPPxUbAvICAAX_T3Swa&_nc_ht=scontent.fvca1-1.fna&oh=67105299e78bdbf3927d4f596b984914&oe=602EAFA9"
+            src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/67731310_112936263384636_3138675968642646016_o.png?_nc_cat=103&ccb=3&_nc_sid=e3f864&_nc_ohc=5WMMT5Ywd1IAX-hLD2G&_nc_ht=scontent.fvca1-1.fna&oh=880bd17bf0513370d77e36d69a466944&oe=6054D111"
             alt="Third slide"
           />
 

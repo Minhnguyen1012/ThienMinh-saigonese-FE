@@ -11,7 +11,11 @@ import Carousels3 from "../components/Carousel-3";
 import { Collapse } from "@material-ui/core";
 const StoryPage = () => {
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: "#ffffff",
+      }}
+    >
       <PublicNavbar />
       <CarouselsStory />
       <Container className="cover-center">
@@ -19,13 +23,11 @@ const StoryPage = () => {
           <div className="story-card d-flex container mt-5">
             <div className="left-side">
               <h1> THE SAIGONESE</h1>
-              <h3>Giai điệu ẩm thực đầy thăng hoa từ “Tinh tuý thuần Việt”</h3>
+              <h3>Nơi thăng hoa của nền ẩm thực Việt</h3>
               <p>
-                Nâng tầm tinh túy ẩm thực Á - Âu đầy gợi nhớ, ký ức tuổi thơ,
-                với các món ăn mang đậm bản sắc Việt từ những bữa cơm gia đình
-                hay các món ăn truyền thống lâu đời tạo thành một chuyến hành
-                trình đầy cảm xúc trong trải nghiệm của thực khách khi đến với
-                The Saigonese.
+                Từ những ngõ ngách ven đường tới nhà hàng sang trọng , những món
+                ăn Việt từ lâu đã được "thổi hồn" bằng những thứ bình dị đơn sơ
+                mộc mạc ở mảnh đất Sài Gòn này .
               </p>
             </div>
             <div className="right-side">
@@ -95,25 +97,23 @@ const StoryPage = () => {
           <Col className="left-side-2 d-flex">
             <img
               style={{ height: "70vh", width: "30vw" }}
-              src="https://scontent.fvca1-1.fna.fbcdn.net/v/t1.0-9/135753231_428466738498252_929470227142106004_n.jpg?_nc_cat=111&ccb=2&_nc_sid=0debeb&_nc_ohc=Z0xKOD3glRMAX8_RtE0&_nc_ht=scontent.fvca1-1.fna&oh=597ccb6d722e0050ac3f0d0ac5aab201&oe=603C6E68"
+              src="https://scontent.fvca1-1.fna.fbcdn.net/v/t31.0-8/28161403_626139504384199_5097338243877788712_o.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_ohc=wnrq2Mvgv-0AX8DV5BB&_nc_ht=scontent.fvca1-1.fna&oh=f67a4de747751ad0c44c3d09ec671f53&oe=6054154E"
               alt="food"
             />
             <Col className="right-side2 ">
               <h3>Giai điệu ẩm thực đầy thăng hoa từ “Tinh tuý thuần Việt”</h3>
               <p>
-                Thành lập năm 2021 và là một trong những thương hiệu hàng đầu
-                của La Sinfonía Hotels and Resorts Group, nhà hàng The Rhythms
-                lấy cảm hứng từ những đặc tính cơ bản của âm nhạc, ngân lên một
-                bản giao hưởng của ẩm thực Việt Nam chính hiệu, nhấn nhá với
-                những nét kiến trúc đương đại, tinh tế đến từng chi tiết. Tọa
-                lạc ở ngay trung tâm thủ đô Hà Nội với tầm nhìn tuyệt vời của hồ
-                Hoàn Kiếm và Phố Cổ, nhà hàng The Rhythms đem lại một trải
-                nghiệm ăn uống trọn vẹn, một sự hòa trộn hoàn hảo giữa di sản
-                địa phương và phong cách hiện đại, các công thức nấu ăn cổ điển
-                nâng tầm lên tiêu chuẩn quốc tế, với mong muốn tạo ra một cộng
-                đồng người yêu ẩm thực - nơi cả người dân địa phương và bạn bè
-                quốc tế có thể thưởng thức, trân trọng và quảng bá hương vị Việt
-                Nam rộng khắp khu vực.
+                Thành lập từ năm 2020 , The Saigonese với phương châm mang đến
+                cho bạn những món ăn đậm đà hương vị Việt , xen lẫn những món ăn
+                phá cách Á-Âu hiện đại . Hãy đến và cảm nhận rằng " The
+                Saigonese " sẽ không làm bạn thất vọng ! Từ những nét phong lưu
+                khoáng đãng của Sài Gòn xưa , chấm phá xen lẫn nét hương vị độc
+                đáo đây ắt hẳn là nơi nâng tầm cho ẩm thực Việt - là nơi quảng
+                bá bản giao hưởng ẩm thực đến tất cả mọi người !!!
+              </p>
+              <p>
+                {" "}
+                The Saigonese với 3 tiêu chí " Tinh Tế - Tinh Tuý - Tinh Hoa "
               </p>
             </Col>
           </Col>
@@ -136,7 +136,7 @@ const StoryPage = () => {
           </div>
         </center>
       </Container>
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ import { Nav } from "react-bootstrap";
 import authActions from "../redux/actions/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import MuiAlert from "@material-ui/lab/Alert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 const StyledMenu = withStyles({
   paper: {
@@ -31,7 +31,9 @@ const StyledMenu = withStyles({
     {...props}
   />
 ));
-
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     "&:focus": {

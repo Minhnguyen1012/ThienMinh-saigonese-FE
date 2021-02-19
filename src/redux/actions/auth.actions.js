@@ -2,6 +2,8 @@ import * as types from "../constants/auth.constants";
 import api from "../../apiService";
 import { toast } from "react-toastify";
 import { routeActions } from "./route.actions";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const loginRequest = ({ email, password }) => async (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST, payload: null });
@@ -102,7 +104,7 @@ const logout = () => (dispatch) => {
   delete api.defaults.headers.common["authorization"];
   localStorage.removeItem("accessToken");
   dispatch({ type: types.LOGOUT, payload: null });
-  toast("Logout Success");
+  // toast("Logout Success");
 };
 export const authActions = {
   register,

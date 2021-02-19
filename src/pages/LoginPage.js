@@ -127,7 +127,7 @@ const LoginPage = () => {
 
             <Col md="6" xl="5" className="mb-4">
               <div type="fadeInRight" delay=".3s">
-                <Card id="loginn-card1">
+                <div id="loginn-card" className="cardds">
                   <Card.Body className="white-text">
                     <h3 className="text-center">
                       <FontAwesomeIcon icon={faUserFriends} color={"black"} />
@@ -157,7 +157,7 @@ const LoginPage = () => {
                           value={formData.password}
                         />
                       </Form.Group>
-                      <div style={{ marginLeft: "100px" }}>
+                      <div style={{ marginLeft: "150px" }}>
                         <Button className="mb-2 " onClick={handleSubmit}>
                           Sign In
                         </Button>
@@ -227,7 +227,7 @@ const LoginPage = () => {
                       </a>
                     </div>
                   </Card.Body>
-                </Card>
+                </div>
               </div>
             </Col>
           </Row>

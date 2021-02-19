@@ -33,11 +33,11 @@
   justify-content: flex-start;
 }
 .caption {
-  top: 50vh;
+  top: 40vh;
 }
 .textBox {
   animation: textup 12s linear infinite;
-  transform: translateY(50px);
+  transform: translateY(40px);
 }
 /*  */
 @keyframes textup {

@@ -9,9 +9,9 @@ const Carousels3 = () => {
     setIndex(selectedIndex);
   };
 
-  useEffect(() => {
-    if (index != 0) setIndex(0);
-  }, [index]);
+  // useEffect(() => {
+  //   if (index != 0) setIndex(0);
+  // }, [index]);
 
   return (
     <>

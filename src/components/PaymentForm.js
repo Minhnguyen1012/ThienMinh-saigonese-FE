@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-export default function PaymentForm() {
+export default function PaymentForm({ formData, setFormData }) {
+  const handleChange = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -16,9 +23,12 @@ export default function PaymentForm() {
           <TextField
             required
             id="cardName"
+            name="cardName"
             label="Name on card"
             fullWidth
             autoComplete="cc-name"
+            // value={formData.cardName}
+            // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -28,6 +38,8 @@ export default function PaymentForm() {
             label="Card number"
             fullWidth
             autoComplete="cc-number"
+            // value={formData.cardName}
+            // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -37,6 +49,8 @@ export default function PaymentForm() {
             label="Expiry date"
             fullWidth
             autoComplete="cc-exp"
+            value={formData.expDate}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -47,6 +61,8 @@ export default function PaymentForm() {
             helperText="Last three digits on signature strip"
             fullWidth
             autoComplete="cc-csc"
+            // value={formData.ccv}
+            // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>

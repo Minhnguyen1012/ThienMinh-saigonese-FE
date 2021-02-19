@@ -2,7 +2,7 @@ import { IconButton, makeStyles, Button, Divider } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 // import { Button, Card, CardGroup, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import api from "../apiService";
 
 import { Chat, Delete, Edit } from "@material-ui/icons";
@@ -52,6 +52,7 @@ const DetailPage = () => {
   console.log(menuId);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [showComments, setShowComments] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
 
   const submitReviewLoading = useSelector(
     (state) => state.theReviews.submitReviewLoading
@@ -69,6 +70,13 @@ const DetailPage = () => {
       setShowComments(true);
     } else {
       setShowComments(false);
+    }
+  };
+  const handleShowHistory = () => {
+    if (showHistory === false) {
+      setShowHistory(true);
+    } else {
+      setShowHistory(false);
     }
   };
   const handleInputChange = (e) => {
@@ -181,7 +189,7 @@ const DetailPage = () => {
                     ></h5>
 
                     <div class="body">
-                      <a className="aa" href="#">
+                      <a className="aa" href="/menu">
                         <div className="text">
                           <span className="spans">Menu</span>
                         </div>
@@ -200,10 +208,12 @@ const DetailPage = () => {
         <h1>History</h1>
         <hr />
         <h4>{food?.name}</h4>
-        <div>{food?.info}</div>
-        {/* {food?.info?.length < 90
+        {/* <div>{food?.info}</div> */}
+        {food?.info?.length < 90
           ? food?.info
-          : food?.info.slice(0, 201) + " ..."} */}
+          : food?.info.slice(0, 250) + " ..."}
+        <Link onClick={handleShowHistory}>Xem Them</Link>
+
         <p style={{ marginTop: "15px", float: "right", color: "grey" }}>
           Source: Wikipedia
         </p>
@@ -235,6 +245,7 @@ const DetailPage = () => {
           <h5 id="commentsSection" className="text-left">
             Comments:
           </h5>
+          {/* TODO */}
           <HoverRating />
           {isAuthenticated && (
             <ReviewForm
