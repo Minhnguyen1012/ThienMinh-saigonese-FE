@@ -309,20 +309,30 @@ footer {
 .sidebar {
   z-index: 100;
   border-radius: 10px;
-  background-color: #d5b389;
+  background-color: #dbd3d3;
   position: sticky;
   left: 60px;
   top: 220px;
   margin-left: 20px;
   margin-top: 30px;
   margin-bottom: 40px;
-
+  height: 400px;
   width: 250px;
+}
+.border_right_before::before {
+  content: "";
+  position: absolute;
+  margin-left: 100px;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  top: 0;
+  background: #ea8025;
 }
 .sidebar p {
   font-size: 20px;
 
-  color: #fffefe;
+  color: #0f0e0e;
   display: block;
   width: 100%;
   line-height: 60px;
@@ -367,7 +377,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 80px -10px black;
+  box-shadow: 0 0 80px -10px rgb(112, 111, 111);
   overflow: hidden;
 }
 
@@ -457,7 +467,7 @@ svg#curve {
 .card:hover .info {
   transform: translateY(0px);
   background-color: #efefef;
-  height: 200px;
+  height: 250px;
 }
 
 .name {

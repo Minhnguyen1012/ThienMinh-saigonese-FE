@@ -22,7 +22,7 @@ const SideMenu = () => {
 
   return (
     <Container fluid>
-      <h1 className="text-menu">{filter}</h1>
+      <h1 className="text-menu mt-5 ml-5">{filter}</h1>
       <Row
         className="leftSide"
         style={{ display: "flex", justifyContent: "flex-end" }}
@@ -51,7 +51,7 @@ const SideMenu = () => {
             </p>
           </center>
         </Col>
-        <Col md={10}>
+        <Col md={10} className="border_right_before">
           {newFoods ? (
             <CardsAnimation newFoods={newFoods} />
           ) : (

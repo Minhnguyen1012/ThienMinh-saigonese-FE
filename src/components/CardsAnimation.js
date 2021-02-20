@@ -6,7 +6,7 @@ import foodActions from "../redux/actions/food.actions";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import RemoveIcon from "@material-ui/icons/Remove";
 import { recipeActions } from "../redux/actions/addEdit.actions";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import cartActions from "../redux/actions/cart.actions";
 
 const CardsAnimation = ({ newFoods }) => {
@@ -100,6 +100,7 @@ const CardsAnimation = ({ newFoods }) => {
                     )}
                   </div>
                 </div>
+
                 <svg id="curve">
                   <rect
                     id="dummyRect"

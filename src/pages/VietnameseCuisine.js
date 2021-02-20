@@ -25,7 +25,7 @@ const VietnameseCuisine = () => {
     dispatch(foodActions.getFoodByCategory(category));
   }, [dispatch]);
   return (
-    <>
+    <div style={{ backgroundColor: "lightgray" }}>
       <Carousels />
       <div className="d-flex justify-content-between ml-5 mt-5 mr-5">
         <h1 className="text-menu">{categoryWords.join(" ")}</h1>
@@ -49,7 +49,7 @@ const VietnameseCuisine = () => {
         pageId="150211800209794"
         appId="m.me/103840071695085"
       />
-    </>
+    </div>
   );
 };
 
