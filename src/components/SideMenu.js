@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Card, CardGroup, Row, Col } from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
+import { Card, CardGroup, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import foodActions from "../redux/actions/food.actions";
 import CardsAnimation from "./CardsAnimation";
@@ -7,39 +7,59 @@ import CardsAnimation from "./CardsAnimation";
 const SideMenu = () => {
   const dispatch = useDispatch();
   const foods = useSelector((state) => state.food.foods);
+  const [filter, setFilter] = useState("");
+  let newFoods;
   if (foods) {
     console.log(foods[0]?.images[0]);
   }
   useEffect(() => {
-    dispatch(foodActions.foodsRequest());
-  }, [dispatch]);
+    if (!filter) {
+      dispatch(foodActions.foodsRequest());
+    } else {
+      dispatch(foodActions.getFoodByCategory(filter));
+    }
+  }, [dispatch, filter]);
+
   return (
-    <div>
-      <Row className="leftSide">
-        <Col md={2} className="sidebar">
-          <center>
-            <a href="#">
+    <Container fluid>
+      <h1 className="text-menu ">{filter}</h1>
+      <Row
+        className="leftSide"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
+        <Col md={2}>
+          <center className="sidebar">
+            <p
+              onClick={() => {
+                setFilter("Vietnamese Cuisine");
+                // console.log("setfilter");
+              }}
+            >
               <span>Vietname Cuisine</span>
-            </a>
-            <a href="#">
+            </p>
+            <p onClick={() => setFilter("Tea")}>
               <span>Tea</span>
-            </a>
-            <a href="#">
+            </p>
+            <p onClick={() => setFilter("Cafe")}>
               <span>Cafe</span>
-            </a>
-            <a href="#">
+            </p>
+            <p onClick={() => setFilter("dessert")}>
               <span>Dessert</span>
-            </a>
-            <a href="#">
+            </p>
+            <p onClick={() => setFilter("drink")}>
               <span>Drink</span>
-            </a>
+            </p>
           </center>
         </Col>
-        <Col className="rightSide ">
-          <CardsAnimation />
+        <Col md={10}>
+          {newFoods ? (
+            <CardsAnimation newFoods={newFoods} />
+          ) : (
+            <CardsAnimation />
+          )}
         </Col>
       </Row>
-    </div>
+    </Container>
   );
 };
 

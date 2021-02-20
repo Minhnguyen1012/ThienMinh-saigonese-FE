@@ -12,7 +12,7 @@ import PublicNavbar from "../components/PublicNavbar";
 import ReviewForm from "../components/ReviewForm";
 import foodActions from "../redux/actions/food.actions";
 import reviewActions from "../redux/actions/review.actions";
-import { Container } from "react-bootstrap";
+import { Container, Nav } from "react-bootstrap";
 // import { routeActions } from "../redux/actions/route.actions";
 
 const useStyles = makeStyles((theme) => ({
@@ -189,12 +189,12 @@ const DetailPage = () => {
                     ></h5>
 
                     <div class="body">
-                      <a className="aa" href="/menu">
+                      <Nav.Link className="aa" to="/menu">
                         <div className="text">
                           <span className="spans">Menu</span>
                         </div>
                         <div className="liquid"></div>
-                      </a>
+                      </Nav.Link>
                     </div>
                   </div>
                 </div>
@@ -209,9 +209,15 @@ const DetailPage = () => {
         <hr />
         <h4>{food?.name}</h4>
         {/* <div>{food?.info}</div> */}
-        {food?.info?.length < 90
-          ? food?.info
-          : food?.info.slice(0, 250) + " ..."}
+        {showHistory ? (
+          food?.info
+        ) : (
+          <>
+            {food?.info?.length < 90
+              ? food?.info
+              : food?.info.slice(0, 250) + " ..."}
+          </>
+        )}
         <Link onClick={handleShowHistory}>Xem Them</Link>
 
         <p style={{ marginTop: "15px", float: "right", color: "grey" }}>

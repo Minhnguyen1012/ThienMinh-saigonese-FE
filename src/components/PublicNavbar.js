@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { Navbar, Nav, NavDropdown, NavLink } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../images/logo2.png";
 import Modals from "./Modals";
 import api from "../apiService";
@@ -102,18 +102,18 @@ const PublicNavbar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link className="hover-border" href="/">
+              <Nav.Link as={Link} className="hover-border" to="/">
                 Home
               </Nav.Link>
-              <Nav.Link className="hover-border" href="/menu">
+              <Link className="hover-border" to="/menu">
                 Menu
-              </Nav.Link>
-              <Nav.Link className="hover-border" href="/story">
+              </Link>
+              <Link className="hover-border" to="/story">
                 Our Stories
-              </Nav.Link>
+              </Link>
               <NavDropdown title="All Products" id="basic-nav-dropdown">
                 <div style={{ fontSize: "17px", textAlign: "left" }}>
-                  <NavDropdown.Item href="/category/vietnamese cuisine">
+                  <NavDropdown.Item to="/category/vietnamese cuisine">
                     <FontAwesomeIcon
                       className="mr-2"
                       icon={faUtensilSpoon}

@@ -307,17 +307,19 @@ footer {
 
 /* MainPage */
 .sidebar {
+  z-index: 100;
   border-radius: 10px;
   background-color: #d5b389;
-  /* position: fixed; */
-  padding-top: 30px;
+  position: sticky;
+  left: 60px;
+  top: 220px;
+  margin-left: 20px;
+  margin-top: 30px;
+  margin-bottom: 40px;
 
-  left: 2rem;
-  margin-top: 100px;
-  height: 600px;
   width: 250px;
 }
-.sidebar a {
+.sidebar p {
   font-size: 20px;
 
   color: #fffefe;
@@ -330,7 +332,7 @@ footer {
   transition: 0.2s;
   transition-property: background;
 }
-.sidebar a:hover {
+.sidebar p:hover {
   background: rgb(146, 180, 201);
 }
 .rightSide {
@@ -345,29 +347,23 @@ body {
 }
 
 .background {
-  position: absolute;
+  /* position: absolute; */
   top: -40px;
   left: -40px;
   height: 120%;
   width: 120%;
-  /* background-image: url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* -webkit-filter: blur(30px); */
-  /* filter: blur(30px); */
 }
 
 .card {
+  z-index: 100;
   border-radius: 30px;
   width: 15rem;
   height: 17rem;
   margin-left: 50px;
   margin-bottom: 5px;
-  /* object-fit: cover; */
-  /* position: absolute; */
-  /* margin: auto; */
-  /* background-image: url(https://images.pexels.com/photos/5645081/pexels-photo-5645081.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

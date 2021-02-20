@@ -9,17 +9,25 @@ import { recipeActions } from "../redux/actions/addEdit.actions";
 import { useHistory } from "react-router-dom";
 import cartActions from "../redux/actions/cart.actions";
 
-const CardsAnimation = () => {
+const CardsAnimation = ({ newFoods }) => {
   const dispatch = useDispatch();
-  const foods = useSelector((state) => state.food.foods);
-  if (foods) {
-    console.log(foods[0]?.images[0]);
+  // if newFoods then foods = newfoods, else foods = useSelector
+  let foods = useSelector((state) => state.food.foods);
+  console.log("new", newFoods);
+  if (newFoods) {
+    foods = newFoods;
   }
+
+  if (newFoods) console.log("hi");
   useEffect(() => {
     dispatch(foodActions.foodsRequest());
   }, [dispatch]);
   const history = useHistory();
 
+  useEffect(() => {
+    console.log("hello");
+    console.log(newFoods, "hihihi");
+  }, [newFoods]);
   const user = useSelector((state) => state.auth.user);
 
   const selectedNewProduct = useSelector(
@@ -38,6 +46,7 @@ const CardsAnimation = () => {
     food.qty === undefined ? (food.qty = 1) : (food.qty += 1);
     dispatch(cartActions.cartsRequest(food));
   };
+
   return (
     <div className="thanh">
       {foods &&
