@@ -105,15 +105,15 @@ const PublicNavbar = () => {
               <Nav.Link as={Link} className="hover-border" to="/">
                 Home
               </Nav.Link>
-              <Link className="hover-border" to="/menu">
+              <Nav.Link as={Link} className="hover-border" to="/menu">
                 Menu
-              </Link>
-              <Link className="hover-border" to="/story">
+              </Nav.Link>
+              <Nav.Link as={Link} className="hover-border" to="/story">
                 Our Stories
-              </Link>
+              </Nav.Link>
               <NavDropdown title="All Products" id="basic-nav-dropdown">
                 <div style={{ fontSize: "17px", textAlign: "left" }}>
-                  <NavDropdown.Item to="/category/vietnamese cuisine">
+                  <NavDropdown.Item as={Link} to="/category/vietnamese cuisine">
                     <FontAwesomeIcon
                       className="mr-2"
                       icon={faUtensilSpoon}
@@ -121,7 +121,7 @@ const PublicNavbar = () => {
                     />
                     Vnmese Cuisine
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/category/tea">
+                  <NavDropdown.Item as={Link} to="/category/tea">
                     {" "}
                     <FontAwesomeIcon
                       className="mr-2"
@@ -140,7 +140,7 @@ const PublicNavbar = () => {
                     />
                     Cafe
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/category/drink">
+                  <NavDropdown.Item as={Link} to="/category/drink">
                     <FontAwesomeIcon
                       className="mr-2"
                       icon={faCocktail}
@@ -148,7 +148,7 @@ const PublicNavbar = () => {
                     />
                     Drink
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/category/dessert">
+                  <NavDropdown.Item as={Link} to="/category/dessert">
                     <FontAwesomeIcon
                       className="mr-2"
                       icon={faIceCream}

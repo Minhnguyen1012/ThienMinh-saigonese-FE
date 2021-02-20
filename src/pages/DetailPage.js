@@ -189,12 +189,12 @@ const DetailPage = () => {
                     ></h5>
 
                     <div class="body">
-                      <Nav.Link className="aa" to="/menu">
+                      <Link className="aa" to="/menu">
                         <div className="text">
                           <span className="spans">Menu</span>
                         </div>
                         <div className="liquid"></div>
-                      </Nav.Link>
+                      </Link>
                     </div>
                   </div>
                 </div>

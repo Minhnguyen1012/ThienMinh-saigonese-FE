@@ -22,7 +22,7 @@ const SideMenu = () => {
 
   return (
     <Container fluid>
-      <h1 className="text-menu ">{filter}</h1>
+      <h1 className="text-menu">{filter}</h1>
       <Row
         className="leftSide"
         style={{ display: "flex", justifyContent: "flex-end" }}
