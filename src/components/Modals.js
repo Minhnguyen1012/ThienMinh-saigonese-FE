@@ -70,7 +70,7 @@ const Modals = () => {
                       <tbody>
                         {cartFoods &&
                           cartFoods.map((cart) => {
-                            let total = cart.price * 1000 * cart.qty;
+                            let total = cart.price * cart.qty;
                             bigTotal += total;
                             return (
                               <tr className="w-25">
@@ -82,7 +82,11 @@ const Modals = () => {
                                 />
 
                                 <td>{cart.name}</td>
-                                <td>{cart.price * 1000}</td>
+                                <td>
+                                  {cart.price
+                                    .toFixed(0)
+                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
+                                </td>
                                 <td className="qty" style={{}}>
                                   <input
                                     type="number"
@@ -96,7 +100,14 @@ const Modals = () => {
                                   />
                                 </td>
 
-                                <td>{`${cart.price * 1000 * cart.qty}`}</td>
+                                <td>
+                                  {`${
+                                    cart.price *
+                                    cart.qty
+                                      .toFixed(0)
+                                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+                                  }`}
+                                </td>
                               </tr>
                             );
                           })}
@@ -109,7 +120,13 @@ const Modals = () => {
           </Container>
           <div className="d-flex justify-content-end">
             <h5>
-              Total: <span className="price text-success">{`${bigTotal}`}</span>
+              Total:{" "}
+              <span className="price text-success">
+                {`${bigTotal
+                  .toFixed(0)
+                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`}{" "}
+                VND
+              </span>
             </h5>
           </div>
           <div className="tuan-footer border-top-0 d-flex justify-content-between">
@@ -129,6 +146,7 @@ const Modals = () => {
             >
               Save
             </button>
+            <Button to="/">Next</Button>
           </div>
         </Modal.Body>
       </Modal>

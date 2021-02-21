@@ -21,13 +21,7 @@ const Homepage = () => {
   }, [dispatch]);
 
   return (
-    <div
-      style={{
-        // paddingTop: "72px",
-
-        backgroundColor: "#EEEAE0",
-      }}
-    >
+    <div style={{ backgroundColor: "#f4f5db" }}>
       <PublicNavbar />
       <Carousels />
 

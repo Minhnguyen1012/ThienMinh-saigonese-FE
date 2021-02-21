@@ -131,7 +131,7 @@ const PublicNavbar = () => {
                     />
                     Tea
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/category/cafe">
+                  <NavDropdown.Item as={Link} to="/category/cafe">
                     {" "}
                     <FontAwesomeIcon
                       className="mr-2"

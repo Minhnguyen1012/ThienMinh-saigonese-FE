@@ -56,7 +56,13 @@ const Cards = () => {
               <Card.Title style={{ fontSize: "25px" }}>
                 <strong>{food?.name}</strong>
               </Card.Title>
-              <h5 className="text-menu "> {food?.price * 1000} VND</h5>
+              <h5 className="text-menu ">
+                {" "}
+                {food?.price
+                  .toFixed(0)
+                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}{" "}
+                VND
+              </h5>
               <Button
                 className="mr-3"
                 onClick={() => handleAddFoodToCart(food)}

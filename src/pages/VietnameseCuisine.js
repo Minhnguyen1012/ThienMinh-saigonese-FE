@@ -19,13 +19,13 @@ const VietnameseCuisine = () => {
     categoryWords[i] = tempWord.join("");
   });
 
-  console.log("o laal", category);
+  // console.log("o laal", category);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(foodActions.getFoodByCategory(category));
   }, [dispatch]);
   return (
-    <div style={{ backgroundColor: "lightgray" }}>
+    <div style={{ backgroundColor: "#fcf8e8" }}>
       <Carousels />
       <div className="d-flex justify-content-between ml-5 mt-5 mr-5">
         <h1 className="text-menu">{categoryWords.join(" ")}</h1>
