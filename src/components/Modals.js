@@ -146,7 +146,7 @@ const Modals = () => {
             >
               Save
             </button>
-            <Button to="/">Next</Button>
+            <Button to="/pay-method">Next</Button>
           </div>
         </Modal.Body>
       </Modal>

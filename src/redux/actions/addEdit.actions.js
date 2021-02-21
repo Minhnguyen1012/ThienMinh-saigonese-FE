@@ -2,6 +2,7 @@ import * as types from "../constants/addEdit.constants";
 import api from "../../apiService";
 import { routeActions } from "./route.actions";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const recipesRequest = (
   pageNum = 1,
@@ -98,6 +99,30 @@ const updateRecipe = (recipeId, name, images, price, category, info) => async (
   }
 };
 
+const uploadImage = (image, name, type, price) => async (dispatch) => {
+  dispatch({ type: types.UPLOAD_IMAGE_REQUEST, payload: null });
+  try {
+    const imageData = new FormData();
+    imageData.append("file", image);
+    imageData.append("upload_preset", "saigon");
+
+    const res = await axios.post(
+      "https://api.cloudinary.com/v1_1/saigonese/image/upload",
+      imageData
+    );
+    dispatch({
+      type: types.UPLOAD_IMAGE_SUCCESS,
+      payload: res.data.secure_url,
+    });
+    dispatch(createNewRecipe(name, type, price, res.data.secure_url));
+    dispatch(recipesRequest());
+    toast.success(`Your Item: ${name} has been created`);
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: types.UPLOAD_IMAGE_FAILURE, payload: error });
+  }
+};
+
 const deleteRecipe = (foodId) => async (dispatch) => {
   dispatch({ type: types.DELETE_RECIPE_REQUEST, payload: null });
   try {
@@ -117,4 +142,5 @@ export const recipeActions = {
   createNewRecipe,
   updateRecipe,
   deleteRecipe,
+  uploadImage,
 };

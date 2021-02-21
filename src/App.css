@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Oi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Oleo+Script:wght@700&display=swap");
+
 body {
   overflow-x: hidden;
 }
-@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Oleo+Script:wght@700&display=swap");
 .GGFONT {
   font-family: "Oleo Script", cursive;
   color: #efefef;
@@ -25,7 +29,9 @@ body {
   position: relative;
   text-decoration: none;
 }
-
+.slogans {
+  font-family: "Caveat", cursive;
+}
 .hover-border::before {
   content: "";
   position: absolute;
@@ -43,6 +49,44 @@ body {
   visibility: visible;
   transform: scaleX(1);
 }
+
+.home {
+  filter: brightness(30%);
+  z-index: 0;
+}
+.center-brand-name {
+  display: flex;
+  margin-left: 29rem;
+}
+
+.open {
+  position: absolute;
+  z-index: 1;
+  margin-top: 20rem;
+  width: 24em;
+  font-family: "Dancing Script", cursive;
+
+  display: flex;
+  flex-direction: column;
+}
+.cta-add {
+  margin-left: 36rem;
+  margin-top: 10px;
+  border: 2px solid #c7c5c7;
+  color: #9b969a;
+
+  background: transparent;
+  width: 130px;
+  height: 50px;
+
+  font-family: "minion", serif;
+  font-size: 30px;
+  padding-bottom: 2px;
+}
+.cta-add:hover {
+  background-color: aliceblue;
+}
+
 /*  */
 #loginn .view {
   background-image: url(./images/saigon-night.jpg);
@@ -156,18 +200,28 @@ footer {
 .modal-footer {
   padding-top: 0rem;
 }
-
+.food-name {
+  font-family: "Roboto Slab", serif;
+}
 .card {
   border: none;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 .text-menu {
+  font-family: "Permanent Marker", cursive;
+  font-size: 55px;
   margin: 10px 0 20px;
   line-height: 1.4;
   color: #ea8025;
 }
+.text-menu-2 {
+  margin: 10px 0 20px;
+  color: #ea8025;
+}
+
 .color-cart {
   color: black;
 }
@@ -309,7 +363,7 @@ footer {
 .sidebar {
   z-index: 100;
   border-radius: 10px;
-  background-color: #eabf9f;
+  background-color: #c5d7bd;
   position: sticky;
   left: 60px;
   top: 220px;
@@ -327,7 +381,7 @@ footer {
   width: 2px;
   height: 100%;
   top: 0;
-  background: #ea8025;
+  background: #c6a9a3;
 }
 .sidebar p {
   font-size: 20px;
@@ -343,7 +397,8 @@ footer {
   transition-property: background;
 }
 .sidebar p:hover {
-  background: rgb(146, 180, 201);
+  border-radius: 10px;
+  background: #c6a9a3;
 }
 .rightSide {
   margin-top: 5rem;
@@ -377,7 +432,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 0 80px -10px rgb(112, 111, 111);
+  box-shadow: 0 0 80px -10px rgb(151, 149, 149);
   overflow: hidden;
 }
 

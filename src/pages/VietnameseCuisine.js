@@ -23,24 +23,13 @@ const VietnameseCuisine = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(foodActions.getFoodByCategory(category));
-  }, [dispatch]);
+  }, [dispatch, category]);
+
   return (
-    <div style={{ backgroundColor: "#fcf8e8" }}>
+    <div style={{ backgroundColor: "#f7f2e7" }}>
       <Carousels />
       <div className="d-flex justify-content-between ml-5 mt-5 mr-5">
         <h1 className="text-menu">{categoryWords.join(" ")}</h1>
-        <div>
-          <Button
-            className="mt-4"
-            style={{
-              height: "45px",
-              backgroundColor: "#aa9765",
-              border: "none",
-            }}
-          >
-            All products
-          </Button>
-        </div>
       </div>
       <Container>
         <Cards />

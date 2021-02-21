@@ -2,6 +2,7 @@ import * as types from "../constants/recipe.constants";
 
 const initialState = {
   recipes: [],
+  image: {},
   totalPageNum: 1,
   selectedNewProduct: null,
   loading: false,
@@ -51,6 +52,12 @@ const AddEditReducer = (state = initialState, action) => {
         selectedNewProduct: {},
       };
 
+    case types.UPLOAD_IMAGE_REQUEST:
+      return { ...state, loading: true };
+    case types.UPLOAD_IMAGE_SUCCESS:
+      return { ...state, image: payload, loading: false };
+    case types.UPLOAD_IMAGE_FAILURE:
+      return { ...state, loading: false };
     // Failure
     case types.RECIPE_REQUEST_FAILURE:
     case types.GET_SINGLE_RECIPE_REQUEST_FAILURE:

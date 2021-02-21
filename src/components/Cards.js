@@ -53,10 +53,10 @@ const Cards = () => {
               alt={food?.name}
             />
             <Card.Body>
-              <Card.Title style={{ fontSize: "25px" }}>
+              <Card.Title className="food-name" style={{ fontSize: "28px" }}>
                 <strong>{food?.name}</strong>
               </Card.Title>
-              <h5 className="text-menu ">
+              <h5 className="text-menu-2 food-name">
                 {" "}
                 {food?.price
                   .toFixed(0)

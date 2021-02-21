@@ -31,7 +31,7 @@ const Carousels = () => {
           <Carousel.Caption className="caption textBox">
             <h1 style={{ fontSize: "50px" }}>Câu Chuyện Của Chúng Tôi </h1>
 
-            <p>Câu chuyện ẩm thực đầy sa hoa</p>
+            <p>Một bản giao hưởng ẩm thực đầy sa hoa</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item style={{ background: "#000" }}>
@@ -47,9 +47,9 @@ const Carousels = () => {
             alt="Second slide"
           />
 
-          <Carousel.Caption className="caption textBox">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <Carousel.Caption className="caption textBox slogans">
+            <h1 style={{ fontSize: "60px" }}>Where taste meets the myth</h1>
+            {/* <p>Where taste meets the myth</p> */}
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item style={{ background: "#000" }}>

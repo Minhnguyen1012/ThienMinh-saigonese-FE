@@ -177,12 +177,21 @@ const CardsAnimation = ({ newFoods }) => {
                 </svg>
                 <div className="info">
                   <div className="name">
-                    <Card.Title style={{ fontSize: "25px" }}>
+                    <Card.Title
+                      className="food-name"
+                      style={{ fontSize: "25px" }}
+                    >
                       <strong>{food?.name}</strong>
                     </Card.Title>
                   </div>
                   <div className="job">
-                    <h5 className="text-menu "> {food?.price * 1000} VND</h5>
+                    <h5 className="text-menu-2 food-name">
+                      {" "}
+                      {food?.price
+                        .toFixed(0)
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}{" "}
+                      VND
+                    </h5>
                     <Button
                       className="circle-btn"
                       variant="outline-warning"
