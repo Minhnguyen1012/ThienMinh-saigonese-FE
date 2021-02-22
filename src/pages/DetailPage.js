@@ -174,7 +174,10 @@ const DetailPage = () => {
                       <strong>{food?.name}</strong>
                     </div>
                     <h5 className="text-menu " style={{ fontSize: "25px" }}>
-                      {food?.price * 1000} VNĐ
+                      {food?.price
+                        .toFixed(0)
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}{" "}
+                      vnd
                     </h5>
                     <h5
                       className="text-menu "
@@ -252,7 +255,7 @@ const DetailPage = () => {
             Comments:
           </h5>
           {/* TODO */}
-          <HoverRating />
+          {/* <HoverRating /> */}
           {isAuthenticated && (
             <ReviewForm
               reviewText={reviewText}
