@@ -5,6 +5,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cartActions from "../redux/actions/cart.actions";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 const Modals = () => {
   const [lgShow, setLgShow] = useState(false);
   const cartFoods = useSelector((state) => state.cart.cartFoods);
@@ -19,7 +20,7 @@ const Modals = () => {
     console.log("put this  to this", cartFoods);
     dispatch(cartActions.createNewCart(cartFoods));
   };
-
+  const history = useHistory();
   return (
     <>
       <div variant="light" onClick={() => setLgShow(true)}>
@@ -146,7 +147,7 @@ const Modals = () => {
             >
               Save
             </button>
-            <Button to="/pay-method">Next</Button>
+            <Button onClick={() => history.push("/pay-method")}>Next</Button>
           </div>
         </Modal.Body>
       </Modal>

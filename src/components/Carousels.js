@@ -65,11 +65,11 @@ const Carousels = () => {
             alt="Third slide"
           />
 
-          <Carousel.Caption className="caption textBox">
-            <h3>Third slide label</h3>
-            <p>
+          <Carousel.Caption className="caption textBox slogans">
+            <h1 style={{ fontSize: "60px" }}>Good food and great vibes.</h1>
+            {/* <p>
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            </p> */}
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

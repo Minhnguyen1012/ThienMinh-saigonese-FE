@@ -49,8 +49,8 @@ export default function PaymentForm({ formData, setFormData }) {
             label="Expiry date"
             fullWidth
             autoComplete="cc-exp"
-            value={formData.expDate}
-            onChange={handleChange}
+            // value={formData.expDate}
+            // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>

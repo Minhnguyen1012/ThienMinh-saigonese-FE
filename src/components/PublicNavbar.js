@@ -118,6 +118,7 @@ const PublicNavbar = () => {
                       className="mr-2"
                       icon={faUtensilSpoon}
                       size={"lg"}
+                      color={"#353b48"}
                     />
                     Vnmese Cuisine
                   </NavDropdown.Item>
@@ -127,7 +128,7 @@ const PublicNavbar = () => {
                       className="mr-2"
                       icon={faPagelines}
                       size={"lg"}
-                      color={"green"}
+                      color={"#353b48"}
                     />
                     Tea
                   </NavDropdown.Item>
@@ -137,6 +138,7 @@ const PublicNavbar = () => {
                       className="mr-2"
                       icon={faCoffee}
                       size={"lg"}
+                      color={"#353b48"}
                     />
                     Cafe
                   </NavDropdown.Item>
@@ -145,6 +147,7 @@ const PublicNavbar = () => {
                       className="mr-2"
                       icon={faCocktail}
                       size={"lg"}
+                      color={"#353b48"}
                     />
                     Drink
                   </NavDropdown.Item>
@@ -153,6 +156,7 @@ const PublicNavbar = () => {
                       className="mr-2"
                       icon={faIceCream}
                       size={"lg"}
+                      color={"#353b48"}
                     />
                     Dessert
                   </NavDropdown.Item>

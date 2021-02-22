@@ -51,34 +51,37 @@ body {
 }
 
 .home {
-  filter: brightness(30%);
+  filter: brightness(25%);
   z-index: 0;
 }
 .center-brand-name {
-  display: flex;
-  margin-left: 29rem;
+  /* display: flex;
+  margin-left: 29rem; */
 }
-
+.brand {
+  position: relative;
+  top: 20rem;
+  left: 28rem;
+}
 .open {
   position: absolute;
-  z-index: 1;
-  margin-top: 20rem;
-  width: 24em;
-  font-family: "Dancing Script", cursive;
-
+  z-index: 10000;
   display: flex;
   flex-direction: column;
+  width: 24em;
+  font-family: "Dancing Script", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cta-add {
-  margin-left: 36rem;
-  margin-top: 10px;
+  /* margin-left: 36rem;
+  margin-top: 10px; */
   border: 2px solid #c7c5c7;
   color: #9b969a;
-
   background: transparent;
   width: 130px;
   height: 50px;
-
   font-family: "minion", serif;
   font-size: 30px;
   padding-bottom: 2px;

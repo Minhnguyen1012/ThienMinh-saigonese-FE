@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import Cards from "../components/Cards";
 import Carousels from "../components/Carousels";
 import foodActions from "../redux/actions/food.actions";
-
+import CardsAnimation from "../components/CardsAnimation";
 const VietnameseCuisine = () => {
   let { category } = useParams();
   let categoryWords = category.split(" ");
@@ -33,6 +33,7 @@ const VietnameseCuisine = () => {
       </div>
       <Container>
         <Cards />
+        {/* <CardsAnimation /> */}
       </Container>
       <MessengerCustomerChat
         pageId="150211800209794"

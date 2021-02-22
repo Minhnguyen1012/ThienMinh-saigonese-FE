@@ -10,13 +10,14 @@ import foodActions from "../redux/actions/food.actions";
 import { useDispatch, useSelector } from "react-redux";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 import ReviewForm from "../components/ReviewForm";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const Homepage = () => {
   const dispatch = useDispatch();
   const foods = useSelector((state) => state.food.foods);
   if (foods) {
     console.log(foods[0]?.images[0]);
   }
+  const history = useHistory();
   useEffect(() => {
     dispatch(foodActions.foodsRequest());
   }, [dispatch]);
@@ -24,15 +25,20 @@ const Homepage = () => {
   return (
     <div>
       <PublicNavbar />
-      <div className="open">
-        <h2
-          className="center-brand-name"
-          style={{ color: "white", fontSize: "100px" }}
-        >
-          Saigonese
-        </h2>
-        <button className="cta-add">Menu</button>
+      <div className="brand">
+        <div className="open">
+          <h2
+            className="center-brand-name"
+            style={{ color: "white", fontSize: "100px" }}
+          >
+            Saigonese
+          </h2>
+          <button className="cta-add" onClick={() => history.push("/menu")}>
+            Menu
+          </button>
+        </div>
       </div>
+
       <img
         className="home"
         style={{ width: "100%", height: "690px" }}

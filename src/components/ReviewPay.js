@@ -7,8 +7,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 
 const products = [
-  { name: "Product 1", desc: "A nice thing", price: "$9.99" },
-  { name: "Product 2", desc: "Another thing", price: "$3.45" },
+  { name: "Product 1", desc: "Gỏi Cuốn", price: "150,000 vnd" },
+  { name: "Product 2", desc: "Dalgona Cafe", price: "150,000 vnd" },
 
   { name: "Shipping", desc: "", price: "Free" },
 ];
@@ -59,7 +59,7 @@ export default function ReviewPay() {
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            $120.06
+            300,000 VND
           </Typography>
         </ListItem>
       </List>
@@ -68,7 +68,7 @@ export default function ReviewPay() {
           <Typography variant="h6" gutterBottom className={classes.title}>
             <strong>Shipping</strong>
           </Typography>
-          <Typography gutterBottom>Sam Smith</Typography>
+          <Typography gutterBottom>Minh Nguyen</Typography>
           <Typography gutterBottom>{addresses.join(", ")}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
