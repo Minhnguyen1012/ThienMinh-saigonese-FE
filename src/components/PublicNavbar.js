@@ -120,7 +120,7 @@ const PublicNavbar = () => {
                       size={"lg"}
                       color={"#353b48"}
                     />
-                    Vnmese Cuisine
+                    Vietnam
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/category/tea">
                     {" "}

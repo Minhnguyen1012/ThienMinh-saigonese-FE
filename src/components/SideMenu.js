@@ -36,7 +36,7 @@ const SideMenu = () => {
                   // console.log("setfilter");
                 }}
               >
-                <span>Vietname Cuisine</span>
+                <span>Vietnamese Cuisine</span>
               </p>
               <p onClick={() => setFilter("Tea")}>
                 <span>Tea</span>
