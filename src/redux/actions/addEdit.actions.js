@@ -1,8 +1,10 @@
 import * as types from "../constants/addEdit.constants";
+
 import api from "../../apiService";
 import { routeActions } from "./route.actions";
 import { toast } from "react-toastify";
 import axios from "axios";
+import foodActions from "./food.actions";
 
 const recipesRequest = (
   pageNum = 1,
@@ -129,7 +131,8 @@ const deleteRecipe = (foodId) => async (dispatch) => {
     const res = await api.delete(`/food/${foodId}`);
     console.log(res);
     dispatch({ type: types.DELETE_RECIPE_SUCCESS, payload: res.data });
-    dispatch(routeActions.redirect("__GO_BACK__"));
+    dispatch(foodActions.foodsRequest());
+    // dispatch(routeActions.redirect("/menu"));
     toast.success("The recipe has been deleted!");
   } catch (error) {
     dispatch({ type: types.DELETE_RECIPE_FAILURE, payload: error });

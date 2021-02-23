@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { TextField } from "@material-ui/core";
 import { Form, Button, Container, ButtonGroup } from "react-bootstrap";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,7 @@ import { routeActions } from "../../redux/actions/route.actions";
 const AddOrEditProduct = ({ menu }) => {
   const [formData, setFormData] = useState({
     name: "",
-    images: [],
+    images: "",
     price: "",
     category: "",
     info: "",
@@ -132,7 +131,7 @@ const AddOrEditProduct = ({ menu }) => {
               type="file"
               placeholder="Image Url"
               name="image"
-              value={formData.image}
+              value={formData.images}
               onChange={handleChange}
             />
           </Form.Group>

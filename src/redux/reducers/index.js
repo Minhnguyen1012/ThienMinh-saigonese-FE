@@ -5,6 +5,7 @@ import foodReducer from "./food.reducer";
 import reviewReducer from "./review.reducer";
 import routeReducer from "./route.reducer";
 import userReducer from "./user.reducer";
+import recipeReducer from "./addEdit.reducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   route: routeReducer,
   cart: CartReducer,
   theReviews: reviewReducer,
+  recipe: recipeReducer,
 });

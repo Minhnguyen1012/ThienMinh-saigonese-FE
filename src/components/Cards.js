@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { recipeActions } from "../redux/actions/addEdit.actions";
 import cartActions from "../redux/actions/cart.actions";
+import foodActions from "../redux/actions/food.actions";
 
 const Cards = () => {
   const history = useHistory();
   const foods = useSelector((state) => state.food.foods);
   const user = useSelector((state) => state.auth.user);
+  // const isLoading=useSelector((state)=>state.addEdit)
 
   const dispatch = useDispatch();
   const selectedNewProduct = useSelector(
@@ -27,7 +29,7 @@ const Cards = () => {
     food.qty === undefined ? (food.qty = 1) : (food.qty += 1);
     dispatch(cartActions.cartsRequest(food));
   };
-
+  // useEffect(() => {}, [foods]);
   return (
     <div className="thanh">
       {foods &&

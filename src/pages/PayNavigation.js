@@ -31,7 +31,7 @@ function getSteps() {
   return ["Shipping address", "Payment details", "Review your order"];
 }
 
-export default function HorizontalLabelPositionBelowStepper() {
+export default function PayNavigation() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();

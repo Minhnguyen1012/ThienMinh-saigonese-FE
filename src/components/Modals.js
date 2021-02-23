@@ -15,10 +15,15 @@ const Modals = () => {
   };
   const dispatch = useDispatch();
   let bigTotal = 0;
-
   const handleSubmit = (e) => {
     console.log("put this  to this", cartFoods);
     dispatch(cartActions.createNewCart(cartFoods));
+  };
+  const handleNext = (e) => {
+    e.preventDefault();
+    setLgShow(false);
+
+    history.push("/pay-method");
   };
   const history = useHistory();
   return (
@@ -147,7 +152,7 @@ const Modals = () => {
             >
               Save
             </button>
-            <Button onClick={() => history.push("/pay-method")}>Next</Button>
+            <Button onClick={handleNext}>Next</Button>
           </div>
         </Modal.Body>
       </Modal>

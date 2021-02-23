@@ -1,4 +1,4 @@
-import * as types from "../constants/recipe.constants";
+import * as types from "../constants/addEdit.constants";
 
 const initialState = {
   recipes: [],
@@ -8,7 +8,7 @@ const initialState = {
   loading: false,
 };
 
-const AddEditReducer = (state = initialState, action) => {
+const recipeReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -71,4 +71,4 @@ const AddEditReducer = (state = initialState, action) => {
   }
 };
 
-export default AddEditReducer;
+export default recipeReducer;

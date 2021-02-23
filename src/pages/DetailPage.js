@@ -57,7 +57,7 @@ const DetailPage = () => {
   const submitReviewLoading = useSelector(
     (state) => state.theReviews.submitReviewLoading
   );
-  const reviewId = params.reviewId;
+  // const reviewId = params.reviewId;
   const project = useSelector((state) => state.theReviews.selectedProject);
   const [reviewText, setReviewText] = useState("");
 

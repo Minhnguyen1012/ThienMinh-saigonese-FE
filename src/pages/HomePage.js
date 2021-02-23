@@ -38,7 +38,6 @@ const Homepage = () => {
           </button>
         </div>
       </div>
-
       <img
         className="home"
         style={{ width: "100%", height: "690px" }}

@@ -88,22 +88,16 @@ export default function CustomizedMenus() {
           </ListItemText>
         </StyledMenuItem>
         {user?.role === "admin" ? (
-          <>
-            <StyledMenuItem>
-              <ListItemIcon>
-                <AddCircleIcon fontSize="small" />
-              </ListItemIcon>
-              <Nav.Link
-                style={{ color: "black" }}
-                as={Link}
-                to="/admin/food/add"
-              >
-                Add Product
-              </Nav.Link>
-            </StyledMenuItem>
-          </>
+          <StyledMenuItem>
+            <ListItemIcon>
+              <AddCircleIcon fontSize="small" />
+            </ListItemIcon>
+            <Nav.Link style={{ color: "black" }} as={Link} to="/admin/food/add">
+              Add Product
+            </Nav.Link>
+          </StyledMenuItem>
         ) : (
-          <></>
+          <div></div>
         )}
 
         <StyledMenuItem>

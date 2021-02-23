@@ -2,33 +2,42 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
-import NotFoundPage from "../components/NotFoundPage";
-import AddEditBlogPage from "../pages/AddEditBlogPage";
 import DetailPage from "../pages/DetailPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import PublicNavbar from "../components/PublicNavbar";
 import RegisterPage from "../pages/RegisterPage";
-import PrivateRoute from "./PrivateRoute";
+
+import NotFoundPage from "../pages/NotFoundPage";
+import StoryPage from "../pages/StoryPage";
+import PayNavigation from "../pages/PayNavigation";
+import VietnameseCuisine from "../pages/VietnameseCuisine";
+import Navs from "../components/Navs";
+import MainPage from "../pages/MainPage";
+import Test from "../Test";
 
 const PublicLayout = () => {
   return (
     <>
-      <PublicNavbar />
-      <Container>
+      {/* <PublicNavbar /> */}
+      <>
         <Switch>
-          <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/foods/:id" component={DetailPage} />
-          <PrivateRoute
+          <Route exact path="/navs" component={Navs} />
+          <Route exact path="/menu" component={MainPage} />
+          <Route exact path="/pay-method" component={PayNavigation} />
+          <Route exact path="/story" component={StoryPage} />
+          <Route exact path="/" component={HomePage} />
+          <Route
             exact
-            path="/blog/edit/:id"
-            component={AddEditBlogPage}
+            path="/category/:category"
+            component={VietnameseCuisine}
           />
           <Route component={NotFoundPage} />
         </Switch>
-      </Container>
+      </>
     </>
   );
 };

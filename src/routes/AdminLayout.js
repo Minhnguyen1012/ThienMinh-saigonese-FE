@@ -12,12 +12,11 @@ import AlertMsg from "../components/Alert";
 const AdminLayout = () => {
   return (
     <>
-      <PublicNavbar />
-      <Container fluid>
+      {/* <PublicNavbar /> */}
+      <>
         <Row>
           {/* <SideMenu /> */}
           <Col md={9} lg={10}>
-            <AlertMsg />
             <Switch>
               {/* <Route exact path="/admin/profile" component={ProfilePage} /> */}
 
@@ -31,7 +30,7 @@ const AdminLayout = () => {
             </Switch>
           </Col>
         </Row>
-      </Container>
+      </>
     </>
   );
 };

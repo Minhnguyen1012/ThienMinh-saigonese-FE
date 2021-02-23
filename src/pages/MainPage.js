@@ -14,7 +14,9 @@ const MainPage = () => {
         <div>
           <img style={{ width: "100%" }} src={mainImg} />
         </div>
+
         <SideMenu />
+
         <MessengerCustomerChat
           pageId="150211800209794"
           appId="m.me/103840071695085"

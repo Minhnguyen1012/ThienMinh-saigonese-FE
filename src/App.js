@@ -3,26 +3,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
-import DetailPage from "./pages/DetailPage";
-import HomePage from "./pages/HomePage";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import SignUp from "./pages/SignUp";
-import PayNavigation from "./pages/PayNavigation";
 import AlertMsg from "./components/Alert";
 import PublicNavbar from "./components/PublicNavbar";
 import Footer from "./components/Footer";
-import StoryPage from "./pages/StoryPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import authActions from "./redux/actions/auth.actions";
-import VietnameseCuisine from "./pages/VietnameseCuisine";
 import MessengerCustomerChat from "react-messenger-customer-chat";
-import AddOrEditProduct from "./pages/Admin/AddOrEditProduct";
-import Navs from "./components/Navs";
 import PrivateRoute from "./routes/PrivateRoute";
 import AdminLayout from "./routes/AdminLayout";
-import MainPage from "./pages/MainPage";
+import PublicLayout from "./routes/PublicLayout";
 const App = () => {
   const dispatch = useDispatch();
   // const isLoading = useSelector((state) => state.auth.loading);
@@ -49,21 +39,8 @@ const App = () => {
           <Router>
             <PublicNavbar />
             <Switch>
-              <Route exact path="/foods/:id" component={DetailPage} />
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/login" component={LoginPage} />
-              <Route exact path="/register" component={RegisterPage} />
-              <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/pay-method" component={PayNavigation} />
-              <Route exact path="/story" component={StoryPage} />
               <PrivateRoute path="/admin" component={AdminLayout} />
-              <Route exact path="/navs" component={Navs} />
-              <Route exact path="/menu" component={MainPage} />
-              <Route
-                exact
-                path="/category/:category"
-                component={VietnameseCuisine}
-              />
+              <Route path="/" component={PublicLayout} />
             </Switch>
           </Router>
           <MessengerCustomerChat
